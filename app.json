@@ -1,0 +1,13 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/logs/logs"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "backgroundColor": "#000",
+    "navigationBarBackgroundColor": "#16181b",
+    "navigationBarTitleText": "拜尔科技",
+    "navigationBarTextStyle":"white"
+  }
+}
