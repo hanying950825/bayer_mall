@@ -1,9 +1,6 @@
 <!--index.wxml-->
 <view class="container">
-  <van-tabbar active="{{ active }}" bind:change="onChangePage">
-    <van-tabbar-item icon="wap-home">首页</van-tabbar-item>
-    <van-tabbar-item icon="wap-nav">分类</van-tabbar-item>
-    <van-tabbar-item icon="cart">购物车</van-tabbar-item>
-    <van-tabbar-item icon="contact">我的</van-tabbar-item>
-  </van-tabbar>
+	<view class="jump">
+		<navigator class="jumpto-category" url="../category/category">跳转到分类</navigator>
+	</view>
 </view>

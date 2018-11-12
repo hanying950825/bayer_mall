@@ -33,8 +33,5 @@ Page({
         }
       })
     }
-  },
-  onChangePage: function(e) {
-    console.log(e.detail)
   }
 })
