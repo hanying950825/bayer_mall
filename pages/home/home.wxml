@@ -1,8 +1,41 @@
-<import src="/wxSearch/wxSearch.wxml"/> 
-<view class="wxSearch-section">    
-<view class="wxSearch-pancel">        
-<input bindinput="wxSearchInput" bindfocus="wxSerchFocus" value="{{wxSearchData.value}}" bindblur="wxSearchBlur" class="wxSearch-input" placeholder="搜索" />        
-<button class="wxSearch-button" bindtap="wxSearchFn" size="mini" plain="true">搜索</button> 
+<view class="header">    
+  <view class="search-input">        
+    <van-search value="{{ value }}" placeholder="请输入搜索关键词" />
+  </view> 
+  <view class="banner">
+    <swiper indicator-dots="true" autoplay="true" interval="2000" duration="300">
+      <block wx:for="{{imgUrls}}">
+        <swiper-item>
+          <image src="{{item}}" class="slide-image" height="150"/>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <view class="btn-enter">
+    <view class="enter-item">
+      <van-icon name="point-gift"></van-icon>
+      <view>推荐</view>
+    </view>
+    <view class="enter-item">
+      <van-icon name="new"></van-icon>
+      <view>新品</view>
+    </view>
+    <view class="enter-item">
+      <van-icon name="points-mall"></van-icon>
+      <view>全部</view>
+    </view>
+  </view>
+  <van-notice-bar left-icon="../../images/laba.png" text="xxx正在打车促销啦，快枪快枪12345667678，没错就是抢！"
+/>
+  <view>
+    <view class="list-tlt">
+      <van-icon name="discount" />
+      限时热销
+    </view>
+    <van-card price="2.00" desc="描述信息" title="商品标题" thumb="{{ imageURL }}" >
+    <view slot="footer">
+      <van-button round type="danger" size="small">查看详情</van-button>
+    </view>
+  </van-card>
+  </view>
 </view> 
-</view> 
-<template is="wxSearch" data="{{wxSearchData}}"/>
