@@ -5,14 +5,26 @@ Page({
 	 * 页面的初始数据
 	 */
 	data: {
-
+    showAva: false,
+    showLoginBtn: true,
+    userInfo: {}
 	},
 
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad: function (options) {
-
+    const _this = this
+    wx.checkSession({
+      success(data) {
+        if (data.errMsg != "checkSession:ok") {
+          _this.setData({
+            showAva: true,
+            showLoginBtn: false
+          })
+        }
+      }
+    })
 	},
 
 	/**
@@ -26,7 +38,7 @@ Page({
 	 * 生命周期函数--监听页面显示
 	 */
 	onShow: function () {
-
+    
 	},
 
 	/**
@@ -62,5 +74,15 @@ Page({
 	 */
 	onShareAppMessage: function () {
 
-	}
+	},
+  onLogin(data) {
+    if (data.detail.userInfo) {
+      this.setData({
+        showAva: true,
+        showLoginBtn: false,
+        userInfo: data.detail.userInfo
+      })
+    }
+    console.log(data.detail.userInfo)
+  }
 })
