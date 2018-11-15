@@ -1,2 +1,8 @@
 <!--pages/cart/cart.wxml-->
-<text>pages/cart/cart.wxml</text>
+<view class="main-content">
+  <view class="cart-clean" wx:if="{{isClean}}">
+    <image src="../../images/cart_select.png" class="cart-img"></image>
+    <text class="clean-tit">哎呀，你的购物车还是空的呢，快去逛逛吧~</text>
+    <van-button plain round type="default">去逛逛</van-button>
+  </view>
+</view>
