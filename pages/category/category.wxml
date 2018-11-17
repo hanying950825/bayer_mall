@@ -1,28 +1,32 @@
 <!--主盒子-->
-<view class="container">
+<view class="container-classify">
   <!--左侧栏-->
-  <view class="nav_left">
-    <block wx:for="{{cateItems}}">
-      <!--当前项的id等于item项的id，那个就是当前状态-->
-      <!--用data-index记录这个数据在数组的下标位置，使用data-id设置每个item的id值，供打开2级页面使用-->
-      <view class="nav_left_items {{curNav == item.cate_id ? 'active' : ''}}" bindtap="switchRightTab" data-index="{{index}}" data-id="{{item.cate_id}}">{{item.cate_name}}</view>
-    </block>
-  </view>
-  <!--右侧栏-->
-  <view class="nav_right">
-    <!--如果有数据，才遍历项-->
-    <view wx:if="{{cateItems[curIndex].ishaveChild}}">
-      <block wx:for="{{cateItems[curIndex].children}}">
-        <view class="nav_right_items">
-        <!--界面跳转 -->
-          <navigator url="../cart/cart">
-            <image src="{{item.image}}"></image>
-            <text>{{item.name}}</text>
-          </navigator>
-        </view>
-      </block>
+  <van-badge-group :active="active" bind:change="onChange">
+    <van-badge title="麦克风"/>
+    <van-badge title="音响"/>
+    <van-badge title="灯光"/>
+    <van-badge title="机柜"/>
+  </van-badge-group>
+  <!-- 右侧内容 -->
+  <view class="right-msg">
+    <!-- 如果有数据则显示 -->
+    <view clss="classify-list" wx:if="isShowClassify">
+      <van-row>
+        <van-col span="8">
+          <image src="../../images/cart_select.png" class="classify-img"></image>
+          xxx系例
+        </van-col>
+        <van-col span="8">
+          <image src="../../images/cart_select.png" class="classify-img"></image>
+          xxx系列
+        </van-col>
+        <van-col span="8">
+          <image src="../../images/cart_select.png" class="classify-img"></image>
+          xxx系列
+        </van-col>
+      </van-row>
     </view>
-    <!--如果无数据，则显示数据-->
+    <!--如果无数据，则显示-->
     <view class="nodata_text" wx:else>该分类暂无数据</view>
   </view>
 </view>

@@ -90,5 +90,8 @@ Page({
     this.setData({
       checked: event.detail
     });
+  },
+  onStepChange(e) {
+    console.log(e.detail)
   }
 })

@@ -2,6 +2,7 @@
   "pages":[
     "pages/home/home",
 		"pages/category/category",
+    "pages/category/list/list",
 		"pages/cart/cart",
 		"pages/personal/personal",
 		"pages/index/index",
@@ -9,7 +10,7 @@
   ],
   "window":{
     "backgroundTextStyle":"light",
-    "backgroundColor": "#000",
+    "backgroundColor": "#fff",
     "navigationBarBackgroundColor": "#16181b",
     "navigationBarTitleText": "拜尔科技",
     "navigationBarTextStyle":"white"

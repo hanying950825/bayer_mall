@@ -1,4 +1,5 @@
 // pages/home/home.js
+var app = getApp();
 Page({
 
 	/**
@@ -89,5 +90,18 @@ Page({
 	 */
 	onShareAppMessage: function () {
 
-	}
+	},
+  onInputFocus() {
+    wx.navigateTo({
+      url: '../category/list/list',
+    })
+  },
+  onAllList() {
+    app.globalData.isSearch = false
+    app.globalData.isShowList = true
+    app.globalData.searchType = 'all'
+    wx.navigateTo({
+      url: `../category/list/list`,
+    })
+  }
 })

@@ -1,12 +1,12 @@
 <view class="header">    
   <view class="search-input">        
-    <van-search value="{{ value }}" placeholder="请输入搜索关键词" />
+    <van-search value="{{ value }}" placeholder="请输入搜索关键词" bind:focus="onInputFocus"/>
   </view> 
   <view class="banner">
     <swiper indicator-dots="true" autoplay="true" interval="2000" duration="300">
       <block wx:for="{{imgUrls}}">
         <swiper-item>
-          <image src="{{item}}" class="slide-image" height="150"/>
+          <image src="{{item}}" class="slide-image" height="500"/>
         </swiper-item>
       </block>
     </swiper>
@@ -20,7 +20,7 @@
       <van-icon name="new"></van-icon>
       <view>新品</view>
     </view>
-    <view class="enter-item">
+    <view class="enter-item" bind:tap="onAllList">
       <van-icon name="points-mall"></van-icon>
       <view>全部</view>
     </view>

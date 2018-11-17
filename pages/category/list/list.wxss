@@ -1,0 +1,18 @@
+/* pages/category/list/list.wxss */
+/* 排序框 */
+.top {
+  display: inline-block;
+}
+.top .van-icon {
+  font-size: 20rpx;
+}
+.top .van-icon-arrow, .top .van-icon-arrow-left {
+  transform:rotate(-90deg)
+}
+.all-list .van-card {
+  margin-bottom: 10px;
+}
+.all-list .van-card__price {
+  color: red;
+  font-size: 30rpx;
+}

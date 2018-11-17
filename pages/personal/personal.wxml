@@ -11,13 +11,9 @@
   </view>
   <!-- 我的订单 -->
   <view class="all-my-order">
-    <view class="my-order">
-      <text>我的订单</text> 
-      <view class="all-order">
-        查看全部订单
-        <van-icon name="arrow"></van-icon>
-      </view> 
-    </view>
+    <van-cell-group>
+      <van-cell title="我的订单" is-link value="查看全部订单" />
+    </van-cell-group>
     <view class="btn-order">
       <view class="enter-item">
         <van-icon name="pending-payment"></van-icon>
@@ -38,42 +34,12 @@
     </view>
   </view>
   <!-- 其他功能 -->
-  <view class="other-fun">
-    <view class="other-item">
-      <view class="other-left">
-        <van-icon name="location"></van-icon>
-        <text>地址管理</text> 
-      </view>
-      <view class="other-right">
-        <van-icon name="arrow"></van-icon>
-      </view> 
-    </view>
-    <view class="other-item">
-      <view class="other-left">
-        <van-icon name="records"></van-icon>
-        <text>收藏</text> 
-      </view>
-      <view class="other-right">
-        <van-icon name="arrow"></van-icon>
-      </view> 
-    </view>
-    <view class="other-item">
-      <view class="other-left">
-        <van-icon name="phone"></van-icon>
-        <text>联系客服</text> 
-      </view>
-      <view class="other-right">
-        <van-icon name="arrow"></van-icon>
-      </view> 
-    </view>
-    <view class="other-item">
-      <view class="other-left">
-        <van-icon name="more-o"></van-icon>
-        <text>关于我们</text> 
-      </view>
-      <view class="other-right">
-        <van-icon name="arrow"></van-icon>
-      </view> 
-    </view>
+  <view class="other-func">
+    <van-cell-group>
+      <van-cell title="地址管理" is-link icon="location" />
+      <van-cell title="收藏" is-link icon="records" />
+      <van-cell title="联系客服" is-link icon="phone" />
+      <van-cell title="关于我们" is-link icon="more-o" />
+    </van-cell-group>
   </view>
 </view>

@@ -3,6 +3,8 @@
     "van-button": "../../dist/button/index",
     "van-card": "../../dist/card/index",
     "van-swipe-cell": "../../dist/swipe-cell/index",
-    "van-checkbox": "../../dist/checkbox/index"
+    "van-checkbox": "../../dist/checkbox/index",
+    "van-submit-bar": "../../dist/submit-bar/index",
+    "van-stepper": "../../dist/stepper/index"
   }
 }
