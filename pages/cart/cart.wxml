@@ -5,4 +5,30 @@
     <text class="clean-tit">哎呀，你的购物车还是空的呢，快去逛逛吧~</text>
     <van-button plain round type="default">去逛逛</van-button>
   </view>
+  <view class="goods-list" wx:if="{{!isClean}}">
+    <view class="heder-msg">
+      <van-checkbox value="{{ checked }}" bind:change="onChange">全选</van-checkbox>
+      <text class="list-font list-line">|</text>
+      <text class="list-font">满xxx包邮</text>
+    </view>
+    <!-- 商品列表 -->
+    <view class="main-list">
+      <van-swipe-cell id="swipe-cell" right-width="{{ 65 }}" async-close bind:close="onClose">
+        <van-cell-group class="card-main">
+          <van-checkbox class="list-checkbox" value="{{ checked }}" bind:change="onChange"></van-checkbox>
+          <van-card
+            price="2.00"
+            desc="描述信息"
+            title="商品标题"
+            thumb="{{ imageURL }}"
+          >
+            <view slot="footer">
+              <van-button size="mini">按钮</van-button>
+            </view>
+          </van-card>
+        </van-cell-group>
+        <view slot="right">删除</view>
+      </van-swipe-cell>
+    </view>
+  </view>
 </view>

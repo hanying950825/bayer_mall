@@ -67,4 +67,6 @@ Dialog.resetDefaultOptions = function () {
 };
 
 Dialog.resetDefaultOptions();
-export default Dialog;
+module.exports = {
+  Dialog: Dialog
+} 

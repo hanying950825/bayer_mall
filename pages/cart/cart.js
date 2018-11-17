@@ -1,11 +1,14 @@
 // pages/cart/cart.js
+var Dialog = require('../../dist/dialog/dialog');    
 Page({
-
+  
 	/**
 	 * 页面的初始数据
 	 */
 	data: {
-    isClean: false
+    isClean: false,
+    checked: true,
+    imageURL: 'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'
 	},
 
 	/**
@@ -62,5 +65,30 @@ Page({
 	 */
 	onShareAppMessage: function () {
 
-	}
+	},
+  // 右划点击删除按钮
+  onClose(event) {
+    const { position, instance } = event.detail;
+    switch (position) {
+      case 'left':
+      case 'cell':
+        instance.close();
+        break;
+      case 'right':
+        wx.showModal({
+          title: '提示',
+          content: '确定删除吗？',
+          success: function() {
+            instance.close();
+          }
+        })
+        break;
+    }
+  },
+  // 是否点击全选
+  onChange(event) {
+    this.setData({
+      checked: event.detail
+    });
+  }
 })
