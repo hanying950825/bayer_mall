@@ -70,5 +70,13 @@ Page({
       icon: 'none',
       title: `切换至第${event.detail}项`
     })
+  },
+  onClassifyList(classify) {
+    app.globalData.isSearch = false
+    app.globalData.isShowList = true
+    app.globalData.searchType = classify
+    wx.navigateTo({
+      url: `../category/list/list`,
+    })
   }
 })

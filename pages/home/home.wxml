@@ -12,11 +12,11 @@
     </swiper>
   </view>
   <view class="btn-enter">
-    <view class="enter-item">
+    <view class="enter-item" bind:tap="onRecList">
       <van-icon name="point-gift"></van-icon>
       <view>推荐</view>
     </view>
-    <view class="enter-item">
+    <view class="enter-item" bind:tap="onNewList">
       <van-icon name="new"></van-icon>
       <view>新品</view>
     </view>
@@ -33,9 +33,9 @@
       限时热销
     </view>
     <van-card price="2.00" desc="描述信息" title="商品标题" thumb="{{ imageURL }}" >
-    <view slot="footer">
-      <van-button round type="danger" size="small">查看详情</van-button>
-    </view>
-  </van-card>
+      <view slot="footer">
+        <van-button round type="danger" size="small">查看详情</van-button>
+      </view>
+    </van-card>
   </view>
 </view> 

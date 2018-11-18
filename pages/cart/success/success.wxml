@@ -1,0 +1,15 @@
+
+<view class="container-success">
+  <view class="main-box">
+    <view class="payTip">
+      <icon class="icon" type="success" size="60" color="#4b0"/>
+      <view class="allText">
+        <view class="tit">支付成功！</view>
+        <view class="sub-tit">感谢你的购买！</view>
+      </view>
+    </view>
+  </view>
+  <view class="btn-box">
+    <van-button type="primary" bind:tap="goHome">返回首页</van-button>
+  </view>
+</view>

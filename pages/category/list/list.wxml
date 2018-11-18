@@ -1,6 +1,6 @@
 <view class="search-input">
   <van-search value="{{ value }}" placeholder="请输入搜索关键词" bind:search="onChangeSearch" wx:if="{{isShowSearch}}"/>
-  <view class="main-list" v-if="isShowList">
+  <view class="main-list" wx:if="{{isShowList}}">
     <van-tabbar active="{{ active }}" bind:change="onChange" fixed="{{fixed}}">
       <van-tabbar-item>默认</van-tabbar-item>
       <van-tabbar-item>价格

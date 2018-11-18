@@ -12,7 +12,7 @@
     <!-- 如果有数据则显示 -->
     <view clss="classify-list" wx:if="isShowClassify">
       <van-row>
-        <van-col span="8">
+        <van-col span="8" bind:tap="onClassifyList">
           <image src="../../images/cart_select.png" class="classify-img"></image>
           xxx系例
         </van-col>

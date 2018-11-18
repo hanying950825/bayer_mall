@@ -84,5 +84,11 @@ Page({
       })
     }
     console.log(data.detail.userInfo)
+  },
+  // 跳转收藏
+  onCollection() {
+    wx.navigateTo({
+      url: 'collection/collection',
+    })
   }
 })

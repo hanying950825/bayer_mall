@@ -1,0 +1,29 @@
+page {
+  background: #fff;
+}
+.main-box{
+  width: 100%;
+  text-align:center;
+  padding-bottom:20rpx;
+}
+.main-box .payTip{
+  padding:250rpx 0 50rpx 0;
+  width:100%;
+}
+.main-box .payTip .allText{
+  margin-left:20rpx;display:inline-block;
+  }
+.main-box .payTip .allText .tit{
+  font-size:50rpx
+}
+.main-box .payTip .allText .sub-tit{
+  margin-top:20rpx;text-align:left;font-size:30rpx
+}
+.btn-box {
+  width: 100%;
+  text-align: center;
+  margin-top: 100rpx;
+}
+.btn-box .van-button {
+  width:50%;
+}

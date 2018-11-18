@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "van-card": "../../../dist/card/index",
+    "van-button": "../../../dist/button/index",
+    "van-swipe-cell": "../../../dist/swipe-cell/index",
+    "van-checkbox": "../../../dist/checkbox/index",
+    "van-checkbox-group": "../../../dist/checkbox-group/index",
+    "van-submit-bar": "../../../dist/submit-bar/index"
+  },
+  "navigationBarTitleText": "收藏列表"
+}

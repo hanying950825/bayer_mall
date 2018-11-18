@@ -5,5 +5,6 @@
     "van-tabbar-item": "../../../dist/tabbar-item/index",
     "van-icon": "../../../dist/icon/index",
     "van-card": "../../../dist/card/index"
-  }
+  },
+  "navigationBarTitleText": "商品列表"
 }

@@ -37,7 +37,7 @@
   <view class="other-func">
     <van-cell-group>
       <van-cell title="地址管理" is-link icon="location" />
-      <van-cell title="收藏" is-link icon="records" />
+      <van-cell title="收藏" is-link icon="records" bind:tap="onCollection"/>
       <van-cell title="联系客服" is-link icon="phone" />
       <van-cell title="关于我们" is-link icon="more-o" />
     </van-cell-group>

@@ -14,19 +14,21 @@
     </view>
     <!-- 商品列表 -->
     <view class="main-list">
-      <van-swipe-cell id="swipe-cell" right-width="{{ 65 }}" async-close bind:close="onClose">
+      <van-swipe-cell id="swipe-cell" right-width="{{ 65 }}" async-close bind:close="onClose" wx:for="{{ list }}" wx:key="{{ index }}">
         <van-cell-group class="card-main">
-          <van-checkbox class="list-checkbox" value="{{ checked }}" bind:change="onChange" checked-color="#000"></van-checkbox>
-          <van-card
-            price="2.00"
-            desc="描述信息"
-            title="商品标题"
-            thumb="{{ imageURL }}"
-          >
-            <view slot="footer">
-              <van-stepper value="{{ 1 }}" bind:change="onStepChange" />
-            </view>
-          </van-card>
+          <van-checkbox-group value="{{ result }}" bind:change="onGoodsChange">
+            <van-checkbox class="list-checkbox" name="{{ item }}" checked-color="#000"></van-checkbox>
+            <van-card
+              price="2.00"
+              desc="描述信息"
+              title="商品标题"
+              thumb="{{ imageURL }}"
+            >
+              <view slot="footer">
+                <van-stepper value="{{ 1 }}" bind:change="onStepChange" />
+              </view>
+            </van-card>
+          </van-checkbox-group>
         </van-cell-group>
         <view slot="right">删除</view>
       </van-swipe-cell>
@@ -37,7 +39,6 @@
         price="{{ 3050 }}"
         button-text="提交订单"
         bind:submit="onSubmit"
-        tip="请完善地址"
       />
     </view>
   </view>

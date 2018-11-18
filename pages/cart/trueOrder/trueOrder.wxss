@@ -1,0 +1,48 @@
+/* pages/cart/trueOrder/trueOrder.wxss */
+/* 选中地址 */
+.choose-add {
+  text-align: left;
+}
+.choose-add text {
+  display: inline-block;
+  vertical-align: bottom;
+}
+.own-add {
+  width: 450rpx;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+/* 商品列表 */
+.goods-list, .pay-btn, .price-detail {
+  margin-top: 10rpx;
+}
+.goods-list .van-card__content {
+  display: block;
+}
+.goods-list .van-card__left {
+  text-align: left;
+}
+.goods-list .van-card__right {
+  display: flex;
+  justify-content: space-between;
+}
+.goods-list .van-card__price {
+  color: red;
+}
+.goods-list .van-cell__value {
+  text-align: center;
+  font-size: 24rpx;
+
+}
+.goods-list .van-icon-arrow, .goods-list .van-icon-arrow-left {
+  transform: rotate(90deg);
+  margin-left: 5rpx;
+}
+/* 支付按钮 */
+.pay-btn .total-price {
+  color: red;
+}
+.pay-btn .van-button {
+  width: 100%;
+}
