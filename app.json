@@ -8,6 +8,7 @@
     "pages/cart/success/success",
 		"pages/personal/personal",
     "pages/personal/collection/collection",
+    "pages/personal/logistics/logistics",
 		"pages/index/index",
 		"pages/logs/logs"
   ],

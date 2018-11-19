@@ -1,4 +1,4 @@
-
+var app = getApp();
 Page({
 
 	/**
@@ -89,6 +89,41 @@ Page({
   onCollection() {
     wx.navigateTo({
       url: 'collection/collection',
+    })
+  },
+  // 跳转到所有订单页
+  onAllOrder() {
+    app.globalData.active = 0
+    wx.navigateTo({
+      url: 'logistics/logistics',
+    })
+  },
+  // 跳转到待支付页面
+  onPay() {
+    app.globalData.active = 1
+    wx.navigateTo({
+      url: 'logistics/logistics',
+    })
+  },
+  // 跳转到待发货页面
+  onWaitDeliver() {
+    app.globalData.active = 2
+    wx.navigateTo({
+      url: 'logistics/logistics',
+    })
+  },
+  // 跳转到已发货页面
+  onDeliver() {
+    app.globalData.active = 3
+    wx.navigateTo({
+      url: 'logistics/logistics',
+    })
+  },
+  // 跳转到已完成页面
+  onFinish() {
+    app.globalData.active = 4
+    wx.navigateTo({
+      url: 'logistics/logistics',
     })
   }
 })

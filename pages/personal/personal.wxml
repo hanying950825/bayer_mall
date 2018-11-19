@@ -12,24 +12,24 @@
   <!-- 我的订单 -->
   <view class="all-my-order">
     <van-cell-group>
-      <van-cell title="我的订单" is-link value="查看全部订单" />
+      <van-cell title="我的订单" is-link value="查看全部订单" bind:tap="onAllOrder"/>
     </van-cell-group>
     <view class="btn-order">
-      <view class="enter-item">
+      <view class="enter-item" bind:tap="onPay">
         <van-icon name="pending-payment"></van-icon>
         <view>待支付</view>
       </view>
-      <view class="enter-item">
+      <view class="enter-item" bind:tap="onWaitDeliver">
         <van-icon name="logistics"></van-icon>
         <view>待发货</view>
       </view>
-      <view class="enter-item">
+      <view class="enter-item" bind:tap="onDeliver">
         <van-icon name="tosend"></van-icon>
         <view>已发货</view>
       </view>
-       <view class="enter-item">
+       <view class="enter-item" bind:tap="onFinish">
         <van-icon name="completed"></van-icon>
-        <view>交易完成</view>
+        <view>已完成</view>
       </view>
     </view>
   </view>

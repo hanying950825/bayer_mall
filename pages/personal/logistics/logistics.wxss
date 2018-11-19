@@ -1,0 +1,17 @@
+/* pages/personal/logistics/logistics.wxss */
+.container-order {
+  height: 100%;
+}
+/* 卡片样式 */
+.none-list {
+  text-align: center;
+  margin: 200rpx 0;
+  color: grey;
+
+}
+.van-card button {
+  margin-left: 10rpx;
+}
+.container-order .van-card__price {
+  color: red;
+}
