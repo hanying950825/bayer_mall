@@ -8,6 +8,8 @@ Page({
 	data: {
     isClean: false,
     checked: true,
+    list: ['1','2'],
+    result: ['1','2'],
     imageURL: 'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'
 	},
 
@@ -87,8 +89,42 @@ Page({
   },
   // 是否点击全选
   onChange(event) {
+    const _this = this
+    if (event.detail == true) {
+      this.setData({
+        checked: event.detail,
+        result: _this.data.list
+      })
+    } else {
+      this.setData({
+        checked: event.detail,
+        result: []
+      })
+    }
+    
+  },
+  // 是否选择单件商品
+  onGoodsChange(event) {
     this.setData({
-      checked: event.detail
-    });
+      result: event.detail
+    })
+    if (this.data.result.length == this.data.list.length) {
+      this.setData({
+        checked: true
+      })
+    } else {
+      this.setData({
+        checked: false
+      })
+    }
+  },
+  // 增加数量
+  onStepChange(e) {
+    console.log(e.detail)
+  },
+  onSubmit() {
+    wx.navigateTo({
+      url: `../cart/trueOrder/trueOrder`,
+    })
   }
 })

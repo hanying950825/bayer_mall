@@ -1,0 +1,97 @@
+<!--pages/personal/logistics/logistics.wxml-->
+<view class="container-order">
+  <van-tabs active="{{ active }}" bind:change="onChange">
+    <van-tab title="全部">
+      <view class="none-list" wx:if="{{!isShowList}}">
+        <text>您还没有订单哦~</text>
+      </view>
+      <view class="all-order" wx:if="{{isShowList}}">
+        <van-card
+          num="2"
+          tag="待支付"
+          price="2.00"
+          desc="描述信息"
+          title="订单编号"
+          thumb="{{ imageURL }}"
+        >
+          <view slot="footer">
+            <van-button type="danger" size="mini">去支付</van-button>
+            <van-button size="mini">取消</van-button>
+          </view>
+        </van-card>
+      </view>
+    </van-tab>
+    <van-tab title="待支付">
+      <view class="none-list" wx:if="{{!isWaitPay}}">
+        <text>您还没有订单哦~</text>
+      </view>
+      <view class="wait-pay" wx:if="{{isWaitPay}}">
+        <van-card
+          num="2"
+          price="2.00"
+          desc="描述信息"
+          title="商品标题"
+          thumb="{{ imageURL }}"
+        >
+          <view slot="footer">
+            <van-button type="danger" size="mini">去支付</van-button>
+            <van-button size="mini">取消</van-button>
+          </view>
+        </van-card>
+      </view>
+    </van-tab>
+    <van-tab title="待发货">
+      <view class="none-list" wx:if="{{!isWaitDeliver}}">
+        <text>您还没有订单哦~</text>
+      </view>
+      <view class="wait-deliver" wx:if="{{isWaitDeliver}}">
+        <van-card
+          num="2"
+          price="2.00"
+          desc="描述信息"
+          title="商品标题"
+          thumb="{{ imageURL }}"
+        >
+          <view slot="footer">
+            <van-button type="danger" size="mini">查看详情</van-button>
+          </view>
+        </van-card>
+      </view>
+    </van-tab>
+    <van-tab title="已发货">
+      <view class="none-list" wx:if="{{!isGoDeliver}}">
+        <text>您还没有订单哦~</text>
+      </view>
+      <view class="go-deliver" wx:if="{{isGoDeliver}}">
+        <van-card
+          num="2"
+          price="2.00"
+          desc="描述信息"
+          title="商品标题"
+          thumb="{{ imageURL }}"
+        >
+          <view slot="footer">
+            <van-button type="danger" size="mini">查看物流</van-button>
+            <van-button size="mini">查看详情</van-button>
+            
+          </view>
+        </van-card>
+      </view>
+    </van-tab>
+    <van-tab title="已完成">
+      <view class="none-list" wx:if="{{!isFinish}}">
+        <text>您还没有订单哦~</text>
+      </view>
+      <view class="finish-order" wx:if="{{isFinish}}">
+        <van-card
+          num="2"
+          price="2.00"
+          desc="描述信息"
+          title="商品标题"
+          thumb="{{ imageURL }}"
+        >
+        </van-card>
+      </view>
+    </van-tab>
+  </van-tabs>
+</view>

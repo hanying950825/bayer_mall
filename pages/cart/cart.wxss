@@ -21,7 +21,7 @@
   margin: 20rpx 0;
 }
 /* 存在商品时 */
-.van-swipe-cell__right {
+.goods-list .van-swipe-cell__right {
   background: red;
   color: #fff;
   text-align: center;
@@ -29,9 +29,16 @@
   font-size: 30rpx;
   line-height: 100px;
 }
+.goods-list .van-swipe-cell {
+  border-top: 1px solid #F6F8F8;
+  padding: 5px 0;
+  background: #fff;
+}
 /* 全选按钮 */
 .heder-msg {
   line-height: 30px;
+  padding-left: 10px;
+  background: #fff;
 }
 .heder-msg .van-checkbox {
   display: inline-block;
@@ -47,12 +54,25 @@
 .list-line {
   color: #F6F8F8;
 }
+
 .main-list .van-card, .main-list .van-checkbox {
   display: inline-block;
 }
-.list-checkbox {
-  width: 7%;
-}
 .main-list .van-card {
-  width: 93%;
+  width: 87%;
+  margin-left: 3%;
+}
+.main-list .van-checkbox {
+  margin-left: 10px;
+}
+.van-card .van-card__content {
+  display: block;
+}
+.van-card .van-card__right {
+  text-align: left;
+  color: red;
+}
+.van-card__left .van-card__title {
+  font-size: 28rpx;
+  max-height: 56rpx;
 }

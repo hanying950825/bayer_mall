@@ -1,4 +1,5 @@
 // pages/home/home.js
+var app = getApp();
 Page({
 
 	/**
@@ -89,5 +90,40 @@ Page({
 	 */
 	onShareAppMessage: function () {
 
-	}
+	},
+  // 搜索结果列表
+  onInputFocus() {
+    app.globalData.isSearch = true
+    app.globalData.isShowList = false
+    wx.navigateTo({
+      url: '../category/list/list',
+    })
+  },
+  // 全部列表
+  onAllList() {
+    app.globalData.isSearch = true
+    app.globalData.isShowList = true
+    app.globalData.searchType = 'all'
+    wx.navigateTo({
+      url: `../category/list/list`,
+    })
+  },
+  // 推荐列表
+  onRecList() {
+    app.globalData.isSearch = false
+    app.globalData.isShowList = true
+    app.globalData.searchType = 'recommend'
+    wx.navigateTo({
+      url: `../category/list/list`,
+    })
+  },
+  // 新品列表
+  onNewList() {
+    app.globalData.isSearch = false
+    app.globalData.isShowList = true
+    app.globalData.searchType = 'new'
+    wx.navigateTo({
+      url: `../category/list/list`,
+    })
+  }
 })

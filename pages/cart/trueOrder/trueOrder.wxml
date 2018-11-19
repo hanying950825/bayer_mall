@@ -1,0 +1,71 @@
+<!--pages/cart/trueOrder/trueOrder.wxml-->
+<view class="container-order">
+  <!-- 用户地址 -->
+  <view class="user-add">
+    <van-cell-group>
+      <van-cell title="收货地址" icon="location" border="{{ false }}" is-link value="点击添加收货地址" wx:if="{{isEmpty}}"/>
+      <van-cell icon="location" border="{{ false }}" is-link wx:if="{{!isEmpty}}">
+        <view class="choose-add">
+          <view class="use-add">
+            <view clsss="name">
+              <text class="name-tit">收货人：</text>
+              <text class="own-name">{{ownName}}</text>
+              <text class="name-tit">{{ownPhone}}</text>
+            </view>
+            <view class="add">
+              <text class="name-tit">收货地址：</text>
+              <text class="own-add">{{ownAdd}}</text>
+            </view>
+          </view>
+        </view>
+      </van-cell>
+    </van-cell-group>
+  </view>
+  <!-- 购买商品列表 -->
+  <view class="goods-list">
+    <van-cell-group>
+      <van-cell title="满xxx包邮"/>
+      <van-cell>
+        <van-card
+          num="2"
+          price="2.00"
+          desc="描述信息"
+          title="商品标题"
+          thumb="{{ imageURL }}"
+        />
+      </van-cell>
+      <van-cell>
+        显示所有
+        <van-icon name="{{iconStyle}}" />
+      </van-cell>
+    </van-cell-group>
+  </view>
+  <!-- 订单价格详情 -->
+  <view class="price-detail">
+    <van-cell-group>
+      <van-cell title="商品金额" border="{{ false }}">
+        <view class="price">
+        ￥{{totalPrice}} 
+        </view>
+      </van-cell>
+      <van-cell title="订单邮费" border="{{ false }}">
+        <view class="price">
+        ￥{{postage}}（{{postage == 0? '免邮费':''}}）
+        </view>
+      </van-cell>
+    </van-cell-group>
+  </view>
+  <!-- 支付按钮 -->
+  <view class="pay-btn">
+    <van-cell-group>
+      <van-cell title="共{{goodsLength}}件" border="{{ false }}">
+        <view class="total-price">
+        合计：￥<text>{{totalPrice}}</text>  
+        </view>
+      </van-cell>
+      <van-cell border="{{ false }}">
+        <van-button type="danger" bind:tap="onSubmitOrder">提交订单</van-button>
+      </van-cell>
+    </van-cell-group>
+  </view>
+</view>

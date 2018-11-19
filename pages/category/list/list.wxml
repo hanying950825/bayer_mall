@@ -1,0 +1,33 @@
+<view class="search-input">
+  <van-search value="{{ value }}" placeholder="请输入搜索关键词" bind:search="onChangeSearch" wx:if="{{isShowSearch}}"/>
+  <view class="main-list" wx:if="{{isShowList}}">
+    <van-tabbar active="{{ active }}" bind:change="onChange" fixed="{{fixed}}">
+      <van-tabbar-item>默认</van-tabbar-item>
+      <van-tabbar-item>价格
+      <view class="top">
+        <van-icon name="arrow" />
+      </view>
+      </van-tabbar-item>
+      <van-tabbar-item>价格
+        <view class="top">
+          <van-icon name="arrow-left" class="text-color"/>
+        </view>
+      </van-tabbar-item>
+      <van-tabbar-item>销量</van-tabbar-item>
+    </van-tabbar>
+    <view class="all-list">
+      <van-card
+        price="2.00"
+        desc="描述信息"
+        title="商品标题"
+        thumb="{{ imageURL }}"
+      />
+      <van-card
+        price="2.00"
+        desc="描述信息"
+        title="商品标题"
+        thumb="{{ imageURL }}"
+      />
+    </view>
+  </view>
+</view>
