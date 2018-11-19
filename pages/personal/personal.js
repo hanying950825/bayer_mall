@@ -15,16 +15,15 @@ Page({
 	 */
 	onLoad: function (options) {
     const _this = this
-    wx.checkSession({
-      success(data) {
-        if (data.errMsg != "checkSession:ok") {
-          _this.setData({
-            showAva: true,
-            showLoginBtn: false
-          })
-        }
-      }
-    })
+    console.log(app.globalData.userInfo)
+    if (app.globalData.userInfo) {
+      _this.setData({
+        showAva: true,
+        showLoginBtn: false,
+        userInfo: app.globalData.userInfo
+      })
+    }
+    
 	},
 
 	/**
