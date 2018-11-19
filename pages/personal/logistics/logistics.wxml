@@ -15,8 +15,8 @@
           thumb="{{ imageURL }}"
         >
           <view slot="footer">
-            <van-button type="danger" size="mini">去支付</van-button>
-            <van-button size="mini">取消</van-button>
+            <van-button type="danger" size="mini" bind:tap="onGoPay">去支付</van-button>
+            <van-button size="mini" bind:tap="onCancelOrder">取消</van-button>
           </view>
         </van-card>
       </view>
@@ -34,8 +34,8 @@
           thumb="{{ imageURL }}"
         >
           <view slot="footer">
-            <van-button type="danger" size="mini">去支付</van-button>
-            <van-button size="mini">取消</van-button>
+            <van-button type="danger" size="mini" bind:tap="onGoPay">去支付</van-button>
+            <van-button size="mini" bind:tap="onCancelOrder">取消</van-button>
           </view>
         </van-card>
       </view>
