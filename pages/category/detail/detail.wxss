@@ -1,0 +1,61 @@
+page {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+/* 轮播图 */
+swiper {
+	height: 750rpx;
+}
+.slide-image {
+	width: 100%;
+	height: 100%;
+}
+
+/* 商品信息 */
+.product-info {
+	margin-top: 20rpx;
+}
+.product-name {
+	margin: 0px 20rpx;
+	font-size: 18px;
+}
+.product-price {
+  margin: 20rpx;
+}
+.product-price-new {
+	color: red;
+  font-size: 40rpx;
+  margin: 10rpx
+}
+.product-price-old {
+	color: #888;
+  text-decoration: line-through;
+  font-size: 14px;
+  vertical-align: 4rpx;
+  font-weight:300;
+	margin: 10rpx;
+}
+.details{
+	width: 100%;
+}
+.goods-detail {
+	font-size: 17px;
+	margin-bottom: 20rpx;
+	text-align: center;
+	color: rgb(75, 73, 73);
+}
+.detail-line {
+	color: #A1A1A1;
+}
+.image-detail {
+	width: 100%;
+}
+/* 占位 */
+.temp {
+  height: 100rpx;
+}
+
+.collect {
+	color: #A0A0A0
+}

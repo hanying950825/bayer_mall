@@ -39,7 +39,7 @@ page {
   display: block;
   position: absolute;
   top: 50rpx;
-  left: 43%;
+  left: 35%;
 }
 /* 我的订单 */
 .all-my-order {

@@ -1,5 +1,8 @@
 /* pages/cart/cart.wxss */
 /* 购物车为空时的样式 */
+.card-main{
+	vertical-align: middle;
+}
 .cart-clean {
   width: 100%;
   height: 100%;

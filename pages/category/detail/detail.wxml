@@ -1,0 +1,35 @@
+<!-- 商品轮播图 -->
+<swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+  <block wx:for="{{imgUrls}}">
+    <swiper-item>
+      <image src="{{item}}" class="slide-image" bindtap="previewImage"/>
+    </swiper-item>
+  </block>
+</swiper>
+
+<!-- 商品详细信息 -->
+<view class="product-info">
+	<view class="product-name">{{goodsTitle}}</view>
+	<view class="product-price">
+		<text class="product-price-new">￥{{goodsPrice}}</text>
+		<text class="product-price-old">原价￥{{goodsPrivilegePrice}}</text>
+	</view>
+</view>
+
+<view class="details"> 
+  <scroll-view scroll-y="true">
+    <view class="goods-detail"><text class="detail-line"> —— </text>商品详情<text class="detail-line"> —— </text></view>
+    <block wx:for-items="{{goodsDetailImg}}" wx:key="name">
+       <image class="image-detail" src="{{item}}" mode="widthFix"/> 
+    </block>
+    <view class="temp"></view>
+  </scroll-view>
+ </view>
+
+<van-goods-action>
+  <van-goods-action-icon icon="chat" text="客服" />
+  <van-goods-action-icon icon="cart" text="购物车" info="{{info}}" />
+  <van-goods-action-icon icon="like" text="收藏" class="collect" />
+  <van-goods-action-button text="加入购物车" type="primary" />
+  <van-goods-action-button text="立即购买" />
+</van-goods-action>
