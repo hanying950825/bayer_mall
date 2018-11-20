@@ -7,11 +7,11 @@ Page({
    */
   data: {
     active: 0,
-    isShowList: false,
+    isShowList: true,
     isWaitPay: true,
-    isWaitDeliver: false,
-    isGoDeliver: false,
-    isFinish: false,
+    isWaitDeliver: true,
+    isGoDeliver: true,
+    isFinish: true,
     imageURL: '../../images/cart.png'
   },
 
@@ -78,5 +78,21 @@ Page({
     //   title: `切换到标签 ${event.detail.index + 1}`,
     //   icon: 'none'
     // });
+  },
+  // 去支付
+  onGoPay() {
+    wx.navigateTo({
+      url: '../../cart/trueOrder/trueOrder',
+    })
+  },
+  // 取消订单
+  onCancelOrder() {
+    wx.showModal({
+      title: '取消订单',
+      content: '您是否确定要取消该订单？',
+      success: function() {
+        console.log(111)
+      }
+    })
   }
 })

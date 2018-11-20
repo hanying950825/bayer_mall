@@ -4,5 +4,6 @@
     "van-tabs": "../../../dist/tabs/index",
     "van-card": "../../../dist/card/index",
     "van-button": "../../../dist/button/index"
-  }
+  },
+  "navigationBarTitleText": "订单列表"
 }
