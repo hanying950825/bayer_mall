@@ -1,14 +1,13 @@
-// pages/personal/collection/collection.js
+// pages/personal/address/address.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    isShowList: true,
-    isShowNone: false,
-    isLogin: true,
-    imageURL: 'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'
+    name: '张三',
+    phone: '138****8888',
+    address: '江苏省南京市xx区西乡街道xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
   },
 
   /**
@@ -66,16 +65,20 @@ Page({
   onShareAppMessage: function () {
   
   },
-  // 去首页
-  goHome() {
-    wx.switchTab({
-      url: '../../home/home',
+  // 删除
+  onDelete() {
+    wx.showModal({
+      title: '删除地址',
+      content: '您是否确定删除该地址？',
+      success: function(data) {
+        console.log(111)
+      }
     })
   },
-  // 去登陆
-  goLogin() {
-    wx.switchTab({
-      url: '../personal',
+  // 添加地址
+  onAddAddress() {
+    wx.navigateTo({
+      url: '../adsDetail/adsDetail',
     })
   }
 })

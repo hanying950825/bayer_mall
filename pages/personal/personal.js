@@ -15,7 +15,6 @@ Page({
 	 */
 	onLoad: function (options) {
     const _this = this
-    console.log(app.globalData.userInfo)
     if (app.globalData.userInfo) {
       _this.setData({
         showAva: true,
@@ -123,6 +122,12 @@ Page({
     app.globalData.active = 4
     wx.navigateTo({
       url: 'logistics/logistics',
+    })
+  },
+  // 跳转地址管理
+  onAddress() {
+    wx.navigateTo({
+      url: 'address/address',
     })
   }
 })

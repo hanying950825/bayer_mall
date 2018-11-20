@@ -11,6 +11,8 @@
 		"pages/personal/personal",
     "pages/personal/collection/collection",
     "pages/personal/logistics/logistics",
+    "pages/personal/address/address",
+    "pages/personal/adsDetail/adsDetail",
 		"pages/index/index",
 		"pages/logs/logs"
   ],

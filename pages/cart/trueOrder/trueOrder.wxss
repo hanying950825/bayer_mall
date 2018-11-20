@@ -8,7 +8,7 @@
   vertical-align: bottom;
 }
 .own-add {
-  width: 450rpx;
+  width: 70%;
   overflow: hidden;
   text-overflow:ellipsis;
   white-space: nowrap;
