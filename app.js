@@ -59,5 +59,6 @@ App({
     searchType: 'all', // 搜索类型
     isShowList: false, // 是否加载时iu显示列表
     active: 0, // 判断订单列表页是哪个页面
+		phoneNumber: '13631183760', //商家号码
   }
 })

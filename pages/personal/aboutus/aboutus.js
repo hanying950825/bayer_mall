@@ -1,18 +1,17 @@
-// pages/personal/aboutus/aboutus.js
+var app = getApp()
 Page({
-
 	/**
 	 * 页面的初始数据
 	 */
 	data: {
 		'companyName': '拜尔商城有限公司',
-		'telephone': 13951849875,
-		'companyAddress': '广东省珠海市珠海大道创新区A座1107广东省珠海市珠海大道创新区A座1107广东省珠海市珠海大道',
+		'companyAddress': '广东省珠海市珠海大道创新区A座1107广东省珠海市珠海大道创新区A座1107',
 		'companyImg': [
 			'../../../images/buou6.jpg',
 			'../../../images/buou5.jpg',
 			'../../../images/buou4.jpg',
-		]
+		],
+		'telephone': app.globalData.phoneNumber
 	},
 	//预览图片
 	previewImage: function (e) {
@@ -20,6 +19,11 @@ Page({
 		wx.previewImage({
 			current: current, // 当前显示图片的http链接  
 			urls: this.data.companyImg // 需要预览的图片http链接列表  
+		})
+	},
+	callSeller: function(){
+		wx.makePhoneCall({
+			phoneNumber: app.globalData.phoneNumber
 		})
 	},
 
