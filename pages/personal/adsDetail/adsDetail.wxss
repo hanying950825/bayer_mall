@@ -1,0 +1,13 @@
+/* pages/personal/adsDetail/adsDetail.wxss */
+.footer-btn {
+  position: fixed;
+  bottom: 0;
+  background: #fff;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  padding: 20rpx 0;
+}
+.footer-btn .van-button {
+  width: 300rpx;
+}
