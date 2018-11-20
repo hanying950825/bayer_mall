@@ -1,3 +1,28 @@
-<view>
-	<image src='http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg' class></image>
+<view class="person-head">
+	<image src="../../../images/timg.jpg" class="avastar-back"></image>
+	<view class="company-info">
+		<image src="../../../images/avastar.jpg" class='comp-avastar'></image>
+		<text class="company-name">{{companyName}}</text>
+	</view>
+	<view class="company-profile">
+		<view class='profile-text'>这里是公司简介这里是公司简介这里是公司简介这里是公司简介这里是公司简介这里是公司简介</view>
+	</view>
+	
+	<view class="company-contact">
+		<view class="comp-name">
+			<text decode="{{true}}">名&emsp;&emsp;称 : </text><text class="info">{{companyName}}</text>
+		</view>
+		<view class="comp-phone">
+			<text decode="{{true}}">联系方式 : </text><text class="info ">{{telephone}}</text>
+		</view>
+		<view class="comp-address">
+			<text>公司地址 : </text><text class="info address">{{companyAddress}}</text>
+		</view>
+	</view>
+
+	<view class="company-images">
+		<block wx:for-items="{{companyImg}}" wx:key="name">
+      <image class="detail-img" src="{{item}}"  mode="aspectFill" bindtap="previewImage"/> 
+    </block>
+	</view>
 </view>
