@@ -58,15 +58,34 @@
 	line-height: 80rpx;
 }
 .comp-address {
+<<<<<<< HEAD
+  padding: 15rpx;
+  min-height: 50rpx;
+}
+.address {
+  display: inline-block;
+  width: 75%;
+min-height: 17rpx;
+  line-height: 40rpx;
+  vertical-align: top;
+} .comp-address {
+  padding: 15rpx;
+  min-height: 50rpx;
+}
+.address {
+  display: inline-block;
+  width: 75%;
+=======
 	padding: 15rpx;
 	min-height: 50rpx;
 }
 .address {
 	display: inline-block;
 	width: 75%;
+>>>>>>> master
   min-height: 17rpx;
-	line-height: 40rpx;
-	vertical-align: top;
+  line-height: 40rpx;
+  vertical-align: top;
 } 
 .tele {
 	color: #00B2DA;

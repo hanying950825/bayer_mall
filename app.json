@@ -1,14 +1,15 @@
 {
   "pages":[
-		"pages/personal/aboutus/aboutus",
-		"pages/category/detail/detail",
 		"pages/home/home",
 		"pages/category/category",
+    "pages/category/detail/detail",
     "pages/category/list/list",
 		"pages/cart/cart",
     "pages/cart/trueOrder/trueOrder",
     "pages/cart/success/success",
 		"pages/personal/personal",
+    "pages/personal/aboutus/aboutus",
+    "pages/personal/orderDetail/orderDetail",
     "pages/personal/collection/collection",
     "pages/personal/logistics/logistics",
     "pages/personal/address/address",

@@ -104,5 +104,11 @@ Page({
     wx.navigateTo({
       url: `../category/list/list`,
     })
+  },
+  // 商品详情
+  onDetails() {
+    wx.navigateTo({
+      url: '../category/detail/detail',
+    })
   }
 })

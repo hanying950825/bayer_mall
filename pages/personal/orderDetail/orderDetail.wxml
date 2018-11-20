@@ -1,0 +1,12 @@
+<!--pages/personal/orderDetail/orderDetail.wxml-->
+<view class="container-detail">
+  <view class="order-status">
+    <text>已发货</text>
+    <van-cell-group>
+      <van-cell icon="logistics" border="{{ false }}" is-link>
+        <view>{{expressStatus}}</view>
+        <view>2018-1-1 11:11:11</view>
+      </van-cell>
+    </van-cell-group>
+  </view>
+</view>
