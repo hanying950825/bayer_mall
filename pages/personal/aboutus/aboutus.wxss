@@ -1,1 +1,82 @@
-/* pages/personal/aboutus/aboutus.wxss */
+.avastar-back {
+	width: 100%;
+	height: 250rpx;
+}
+.company-info {
+	width: 100%;
+	height: 200rpx;
+	background: #fff;
+	position: relative;
+	top: -8rpx;
+	text-align: center;
+}
+.comp-avastar {
+	width: 150rpx;
+	height: 150rpx;
+	position: absolute;
+	left: 40%;
+	top: -35%;
+}
+.company-name {
+	font-size: 40rpx;
+	vertical-align: -130rpx;
+}
+.company-profile,.company-contact {
+	width: 100%;
+	min-height: 100rpx;
+	background: #fff;
+	font-size: 32rpx;
+	
+}
+.company-profile {
+	line-height: 50rpx;
+	padding: 25rpx 0;
+	margin-top: 10rpx;
+	color: #787878;
+}
+.profile-text {
+	width: 96%;
+	margin: 0 auto;
+}
+
+/*联系方式*/
+.company-contact {
+	margin-top: 20rpx;
+	/* padding: 15rpx 0; */
+}
+.info {
+	color: #787878;
+	margin-left: 20rpx;
+}
+.comp-name, .comp-phone, .comp-address {
+	width: 96%;
+	margin: 0 auto;
+	min-height: 80rpx;
+}
+.comp-name, .comp-phone {
+	border-bottom: 1px solid #DADADA;
+	line-height: 80rpx;
+}
+.comp-address {
+	padding: 15rpx;
+}
+.address {
+	display: inline-block;
+	width: 76%;
+  min-height: 17rpx;
+	line-height: 40rpx;
+	vertical-align: top;
+} 
+
+/*公司图片*/
+.company-images {
+	margin-top: 20rpx;
+	background: #fff;
+}
+.detail-img {
+	display: block;
+	width: 96%;
+	margin: 0 auto;
+	padding: 20rpx 0;
+	height: 400rpx;
+}

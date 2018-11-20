@@ -5,7 +5,14 @@ Page({
 	 * 页面的初始数据
 	 */
 	data: {
-
+		'companyName': '拜尔商城有限公司',
+		'telephone': 13951849875,
+		'companyAddress': '广东省珠海市珠海大道创新区A座1107广东省珠海市珠海大道创新区A座1107广东省珠海市珠海大道',
+		'companyImg': [
+			'../../../images/buou6.jpg',
+			'../../../images/buou5.jpg',
+			'../../../images/buou4.jpg',
+		]
 	},
 
 	/**

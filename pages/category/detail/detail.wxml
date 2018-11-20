@@ -2,7 +2,7 @@
 <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
   <block wx:for="{{imgUrls}}">
     <swiper-item>
-      <image src="{{item}}" class="slide-image" bindtap="previewImage"/>
+      <image src="{{item}}" class="slide-image" mode="aspectFill" bindtap="previewImage"/>
     </swiper-item>
   </block>
 </swiper>
@@ -20,7 +20,7 @@
   <scroll-view scroll-y="true">
     <view class="goods-detail"><text class="detail-line"> —— </text>商品详情<text class="detail-line"> —— </text></view>
     <block wx:for-items="{{goodsDetailImg}}" wx:key="name">
-       <image class="image-detail" src="{{item}}" mode="widthFix"/> 
+       <image class="image-detail" src="{{item}}" mode="widthFix" bindtap="previewImage"/> 
     </block>
     <view class="temp"></view>
   </scroll-view>
