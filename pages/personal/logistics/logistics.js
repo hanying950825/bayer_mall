@@ -94,5 +94,11 @@ Page({
         console.log(111)
       }
     })
+  },
+  // 订单详情
+  onOrderDetail() {
+    wx.navigateTo({
+      url: '../orderDetail/orderDetail',
+    })
   }
 })

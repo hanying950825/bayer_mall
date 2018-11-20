@@ -16,7 +16,7 @@
 			<text decode="{{true}}">联系方式 : </text><text class="info ">{{telephone}}</text>
 		</view>
 		<view class="comp-address">
-			<text>公司地址 : </text><text class="info address">{{companyAddress}}</text>
+			<text class="business-ads">公司地址 : </text><text class="info address">{{companyAddress}}</text>
 		</view>
 	</view>
 

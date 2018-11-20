@@ -1,0 +1,4 @@
+/* pages/personal/orderDetail/orderDetail.wxss */
+.van-cell__value view{
+  text-align: left;
+}
