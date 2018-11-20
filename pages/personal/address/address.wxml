@@ -1,0 +1,30 @@
+<!--pages/personal/address/address.wxml-->
+<view class="container-ads">
+  <view class="ads-list" v-if="{{isShow}}">
+    <view class="ads-list-card">
+      <view class="ads-msg">
+        <text class="main-name">{{name}}</text>
+        <text class="main-phone">{{phone}}</text>
+      </view>
+      <view class="address">
+        <text class="main-ads">{{address}}</text>
+      </view>
+      <view class="function-ads">
+        <van-checkbox value="true" checked-color="red">默认地址</van-checkbox>
+        <view class="func-btn">
+          <view class="delete" bind:tap="onDelete">
+            <van-icon name="delete"></van-icon>
+            <text>删除</text>
+          </view>
+          <view class="edit">
+            <van-icon name="records"></van-icon>
+            <text>编辑</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="footer-btn">
+    <van-button type="danger" class="add-new-ads" bind:tap="onAddAddress">添加新地址</van-button>
+  </view>
+</view>

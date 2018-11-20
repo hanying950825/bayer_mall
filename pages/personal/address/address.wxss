@@ -1,0 +1,55 @@
+/* pages/personal/address/address.wxss */
+/* 列表 */
+.ads-list-card {
+  background: #fff;
+  margin: 20rpx;
+  padding: 20rpx;
+}
+.main-name, .main-phone, .main-ads {
+  display: inline-block;
+  font-size: 30rpx;
+}
+.main-phone {
+  margin-left: 20rpx;
+}
+.main-ads {
+  width: 100%;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+.address {
+  margin-top: 10rpx;
+  border-bottom: 1px solid #F7F7FA;
+}
+.van-checkbox__label {
+  font-size: 30rpx;
+}
+.function-ads {
+  display: flex;
+  justify-content: space-between;
+}
+.func-btn .delete, .func-btn .edit {
+  display: inline-block;
+  font-size: 30rpx;
+}
+.func-btn .edit {
+  margin-left: 10rpx;
+}
+.func-btn text {
+  display: inline-block;
+  margin-left: 5rpx;
+}
+
+/* 底部按钮 */
+.footer-btn {
+  text-align: center;
+  background: #fff;
+  padding: 20rpx 0;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+.van-button {
+  width: 500rpx;
+}

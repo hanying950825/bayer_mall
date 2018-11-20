@@ -18,7 +18,8 @@ Page({
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad: function (options) {
-
+    console.log(options)
+    console.log(app.globalData.userInfo)
 	},
 
 	/**
@@ -32,29 +33,7 @@ Page({
 	 * 生命周期函数--监听页面显示
 	 */
 	onShow: function () {
-    wx.login({
-      success(data) {
-        if (data.code) {
-          wx.request({
-            url: 'https://api.weixin.qq.com/sns/jscode2session',
-            data: {
-              appid: 'wxacbe5f1d59932ff7',
-              js_code: data.code,
-              secret: '270b17bc4e9dc93c343f35a1471f12da',
-              grant_type: 'authorization_code'
-              },
-            header: {
-              'content-type': 'application/json' // 默认值
-            },
-            method: 'post',
-            success(res) {
-              console.log(res.data)
 
-            }
-          })
-        }
-      }
-    })
 	},
 
 	/**
