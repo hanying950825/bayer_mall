@@ -10,19 +10,22 @@ Page({
 		interval: 2500,
 		duration: 300,
 		imgUrls: [
-			'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-			'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg',
-			'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg',
-			'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg'
+			'../../../images/buou6.jpg',
+			'../../../images/buou5.jpg',
+			'../../../images/buou4.jpg',
+			'../../../images/buou3.jpg'
 		],
-		goodsTitle: '这个是来自珠海的傻屌这个是来自珠海的傻屌这个是来自珠海的傻屌',
-		goodsPrice : 5000,
-		goodsPrivilegePrice: 8000,
+		goodsTitle: '这是一直颜值巨高的布偶猫,很可爱呦~~',
+		goodsPrice : 8888,
+		goodsPrivilegePrice: 20000,
 		goodsDetailImg:[
-			'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg',
-			'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg',
-			'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg',
-			'http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg'
+			'../../../images/buou5.jpg',
+			'../../../images/buou.png',
+			'../../../images/buou1.png',
+			'../../../images/buou2.png',
+			'../../../images/buou3.jpg',
+			'../../../images/buou4.jpg',
+			'../../../images/buou6.jpg'
 		],
 		info: 5
 	},
