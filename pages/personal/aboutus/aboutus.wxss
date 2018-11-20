@@ -59,10 +59,12 @@
 }
 .comp-address {
 	padding: 15rpx;
+	display: flex;
+	justify-content: space-between;
 }
 .address {
-	display: inline-block;
-	width: 76%;
+	display: block;
+	width: 75%;
   min-height: 17rpx;
 	line-height: 40rpx;
 	vertical-align: top;
