@@ -1,0 +1,9 @@
+/* pages/personal/postMsg/postMsg.wxss */
+.post-basic-msg {
+  background: #fff;
+  padding: 10rpx 20rpx;
+  font-size: 30rpx;
+}
+.main-post-msg {
+  margin-top: 5rpx;
+}

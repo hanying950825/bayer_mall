@@ -1,18 +1,22 @@
-// pages/personal/logistics/logistics.js
-var app = getApp();
+// pages/personal/orderDetail/orderDetail.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    active: 0,
-    isShowList: true,
-    isWaitPay: true,
-    isWaitDeliver: true,
-    isGoDeliver: true,
-    isFinish: true,
-    imageURL: '../../images/cart.png'
+    expressStatus: '您的快递已经到达xxxxxxxxxx',
+    expresstime: '2018-1-1 11:11:11',
+    expressName: '张三',
+    expressPhone: ' 138****8888',
+    expressAds: '江苏省南京市xx区xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
+    imageURL: '../../images/cart.png',
+    totalPrice: '2',
+    goodPrice: '1',
+    postPrice: '2',
+    serviceTime: '9:00-24:00',
+    orderNum: '31231123',
+    orderTime: '2018-1-1 11:11:11'
   },
 
   /**
@@ -26,9 +30,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    this.setData({
-      active: app.globalData.active
-    })
+  
   },
 
   /**
@@ -72,39 +74,25 @@ Page({
   onShareAppMessage: function () {
   
   },
-  // 切换选项对应内容
-  onChange(event) {
-    // wx.showToast({
-    //   title: `切换到标签 ${event.detail.index + 1}`,
-    //   icon: 'none'
-    // });
-  },
-  // 去支付
-  onGoPay() {
-    wx.navigateTo({
-      url: '../../cart/trueOrder/trueOrder',
-    })
-  },
-  // 取消订单
-  onCancelOrder() {
-    wx.showModal({
-      title: '取消订单',
-      content: '您是否确定要取消该订单？',
-      success: function() {
-        console.log(111)
+  // 复制订单编号
+  onCopyNum() {
+    wx.setClipboardData({
+      data: this.data.orderNum,
+      success(res) {
+       wx.showToast({
+         title: '复制成功！',
+       })
       }
     })
   },
-  // 订单详情
-  onOrderDetail() {
-    wx.navigateTo({
-      url: '../orderDetail/orderDetail',
-    })
-  },
-  // 物流信息
-  onPostMsg() {
-    wx.navigateTo({
-      url: '../postMsg/postMsg',
+  // 删除订单
+  onDelete() {
+    wx.showModal({
+      title: '删除订单',
+      content: '您是否确认要删除该订单？',
+      success: function() {
+        
+      }
     })
   }
 })

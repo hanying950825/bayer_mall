@@ -1,0 +1,57 @@
+/* pages/personal/orderDetail/orderDetail.wxss */
+.order-status {
+  background: #fff;
+  padding: 10rpx 0 0 0;
+}
+.order-status .express-status {
+  color: red;
+  font-size: 30rpx;
+  display: inline-block;
+  margin-left: 30rpx;
+}
+.van-cell__value view{
+  text-align: left;
+}
+/* 收件信息 */
+.express-ads {
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+.goods-card, .price {
+  margin-top: 10rpx;
+}
+
+/* 价格说明 */
+.price, .service, .order  {
+  margin-top: 10rpx;
+}
+.total-price .van-cell__value, .service .service-time, .save-tip {
+  color: red;
+}
+.save .van-cell__value {
+  text-align: left;
+}
+.order .van-cell__value, .order .van-cell__title {
+  text-align: left;
+  display: inline-block;
+}
+.order button {
+  margin-left: 10rpx;
+}
+.order .van-cell {
+  display: block;
+}
+/* 底部按钮 */
+.footer-btn {
+  width: 100%;
+  background: #fff;
+  position: fixed;
+  bottom: 0;
+  padding: 10rpx;
+  text-align: right;
+  box-sizing: border-box;
+}
+.footer-btn .van-button--danger {
+  margin-right: 10rpx;
+}

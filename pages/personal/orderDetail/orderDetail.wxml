@@ -1,0 +1,55 @@
+<!--pages/personal/orderDetail/orderDetail.wxml-->
+<view class="container-detail">
+  <view class="order-status">
+    <text class="express-status">已发货</text>
+    <van-cell-group>
+      <van-cell icon="logistics" border="{{ false }}" is-link>
+        <view>{{expressStatus}}</view>
+        <view>{{expresstime}}</view>
+      </van-cell>
+      <van-cell icon="location" border="{{ false }}">
+        <view>{{expressName}}<text>{{expressPhone}}</text></view>
+        <view class="express-ads">{{expressAds}}</view>
+      </van-cell>
+    </van-cell-group>
+  </view>
+
+  <view class="goods-card">
+    <van-card
+      num="2"
+      price="2.00"
+      desc="描述信息"
+      title="商品标题"
+      thumb="{{ imageURL }}"
+    />
+  </view>
+  <view class="price">
+  <van-cell-group>
+    <van-cell title="订单金额" value="¥{{totalPrice}}" class="total-price"/>
+    <van-cell title="商品金额" value="¥{{goodPrice}}" />
+    <van-cell title="邮费" value="¥{{postPrice}}" />
+  </van-cell-group>
+  </view>
+  <view class="service">
+    <van-cell-group>
+      <van-cell title="联系客服" is-link>工作时间：<text class="service-time">{{serviceTime}}</text></van-cell>
+      <van-cell class="save">
+        <text class="save-tip">安全提醒：</text>
+        付款成功后，商家不会以付款异常、卡单、系统升级为由联系您。请勿泄露银行卡号、手机验证码，否则会造成钱款的损失。如有疑问询问客服，警防电话诈骗！
+      </van-cell>
+    </van-cell-group>
+  </view>
+  <view class="order">
+    <van-cell-group>
+      <van-cell title="订单编号：">{{orderNum}}<van-button plain type="danger" size="small" bind:tap="onCopyNum">复制</van-button></van-cell>
+      <van-cell title="下单时间：">{{orderTime}}</van-cell>
+    </van-cell-group>
+  </view>
+  <view style="height:100rpx"></view>
+  <view class="footer-btn">
+    <van-button type="danger" size="small">退货退款</van-button>
+    <van-button type="danger" size="small">去支付</van-button>
+    <van-button type="danger" size="small">物流查询</van-button>
+    <van-button type="danger" size="small" bind:tap="onDelete">删除订单</van-button>
+  </view>
+</view>

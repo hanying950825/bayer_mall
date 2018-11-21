@@ -129,5 +129,11 @@ Page({
     wx.navigateTo({
       url: 'address/address',
     })
+  },
+  // 关于我们页面
+  onAboutUs() {
+    wx.navigateTo({
+      url: 'aboutus/aboutus',
+    })
   }
 })
