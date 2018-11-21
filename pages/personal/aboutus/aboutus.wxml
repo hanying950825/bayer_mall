@@ -10,7 +10,7 @@
 	
 	<view class="company-contact">
 		<view class="comp-name">
-			<text decode="{{true}}">名&emsp;&emsp;称 : </text><text class="info">{{companyName}}</text>
+			<text decode="{{true}}">名&emsp;&emsp;&ensp;称 : </text><text class="info">{{companyName}}</text>
 		</view>
 		<view class="comp-phone">
 			<text decode="{{true}}">联系方式 : </text><text class="info tele" bindtap="callSeller">{{telephone}}</text>
