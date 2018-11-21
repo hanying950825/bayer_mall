@@ -58,7 +58,6 @@
 	line-height: 80rpx;
 }
 .comp-address {
-<<<<<<< HEAD
   padding: 15rpx;
   min-height: 50rpx;
 }
@@ -73,16 +72,8 @@ min-height: 17rpx;
   min-height: 50rpx;
 }
 .address {
-  display: inline-block;
-  width: 75%;
-=======
-	padding: 15rpx;
-	min-height: 50rpx;
-}
-.address {
 	display: inline-block;
 	width: 75%;
->>>>>>> master
   min-height: 17rpx;
   line-height: 40rpx;
   vertical-align: top;

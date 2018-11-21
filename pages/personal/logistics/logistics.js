@@ -100,5 +100,11 @@ Page({
     wx.navigateTo({
       url: '../orderDetail/orderDetail',
     })
+  },
+  // 物流信息
+  onPostMsg() {
+    wx.navigateTo({
+      url: '../postMsg/postMsg',
+    })
   }
 })

@@ -72,7 +72,7 @@
           thumb="{{ imageURL }}"
         >
           <view slot="footer">
-            <van-button type="danger" size="mini">查看物流</van-button>
+            <van-button type="danger" size="mini" bind:tap="onPostMsg">查看物流</van-button>
             <van-button size="mini">查看详情</van-button>
             
           </view>

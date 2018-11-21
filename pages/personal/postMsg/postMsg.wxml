@@ -1,0 +1,20 @@
+<!--pages/personal/postMsg/postMsg.wxml-->
+<view class="container-post">
+  <view class="post-basic-msg">
+    <view>
+      运单号：{{postNum}}
+      <van-button type="danger" plain size="small" bind:tap="onCopyPost">复制</van-button>
+    </view>
+    <view>
+      快递公司：{{postBus}}
+    </view>
+  </view>
+  <view class="main-post-msg">
+    <van-steps
+      steps="{{ steps }}"
+      active="{{ active }}"
+      direction="vertical"
+      active-color="#f44"
+    />
+  </view>
+</view>

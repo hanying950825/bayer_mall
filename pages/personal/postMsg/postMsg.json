@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "van-button": "../../../dist/button/index",
+    "van-steps": "../../../dist/steps/index"
+  },
+  "navigationBarTitleText": "物流信息"
+}
