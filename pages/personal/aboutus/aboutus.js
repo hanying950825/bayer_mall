@@ -5,12 +5,8 @@ Page({
 	 */
 	data: {
 		'companyName': '拜尔商城有限公司',
-<<<<<<< HEAD
 		'telephone': 13951849875,
-    'companyAddress': '广东省珠海市珠海大道创新区A座1107',
-=======
 		'companyAddress': '广东省珠海市珠海大道创新区A座1107广东省珠海市珠海大道创新区A座1107',
->>>>>>> master
 		'companyImg': [
 			'../../../images/buou6.jpg',
 			'../../../images/buou5.jpg',
