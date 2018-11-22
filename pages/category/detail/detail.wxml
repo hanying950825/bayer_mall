@@ -24,12 +24,29 @@
     </block>
     <view class="temp"></view>
   </scroll-view>
+
+  <van-row class="footer-btn">
+    <van-col span="4">
+      <van-icon name="chat" />
+      <view>客服</view>
+    </van-col>
+    <van-col span="4">
+      <van-icon name="cart" />
+      <view>购物车</view>
+      <van-tag round type="danger">5</van-tag>
+    </van-col>
+    <van-col span="4">
+      <van-checkbox use-icon-slot value="{{ checked }}" bind:change="onChange">
+        <image slot="icon" src="{{ checked ? icon.active : icon.normal }}" />
+      </van-checkbox>
+      <view>{{checked ? '收藏' : '已收藏'}}</view>
+    </van-col>
+    <van-col span="6">
+      <van-button type="warning" size="large">加入购物车</van-button>
+    </van-col>
+    <van-col span="6">
+      <van-button type="danger" size="large">立即购买</van-button>
+    </van-col>
+  </van-row>
  </view>
 
-<van-goods-action>
-  <van-goods-action-icon icon="chat" text="客服" />
-  <van-goods-action-icon icon="cart" text="购物车" info="{{info}}" />
-  <van-goods-action-icon icon="like" text="收藏" class="collect" />
-  <van-goods-action-button text="加入购物车" type="primary" />
-  <van-goods-action-button text="立即购买" />
-</van-goods-action>
