@@ -5,7 +5,18 @@ Page({
    * 页面的初始数据
    */
   data: {
-    expressStatus: '您的快递已经到达xxxxxxxxxx'
+    expressStatus: '您的快递已经到达xxxxxxxxxx',
+    expresstime: '2018-1-1 11:11:11',
+    expressName: '张三',
+    expressPhone: ' 138****8888',
+    expressAds: '江苏省南京市xx区xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
+    imageURL: '../../images/cart.png',
+    totalPrice: '2',
+    goodPrice: '1',
+    postPrice: '2',
+    serviceTime: '9:00-24:00',
+    orderNum: '31231123',
+    orderTime: '2018-1-1 11:11:11'
   },
 
   /**
@@ -62,5 +73,26 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+  // 复制订单编号
+  onCopyNum() {
+    wx.setClipboardData({
+      data: this.data.orderNum,
+      success(res) {
+       wx.showToast({
+         title: '复制成功！',
+       })
+      }
+    })
+  },
+  // 删除订单
+  onDelete() {
+    wx.showModal({
+      title: '删除订单',
+      content: '您是否确认要删除该订单？',
+      success: function() {
+        
+      }
+    })
   }
 })
