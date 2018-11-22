@@ -60,8 +60,6 @@
 .comp-address {
   padding: 15rpx;
   min-height: 50rpx;
-	padding: 15rpx;
-	min-height: 50rpx;
 }
 .address {
 	display: inline-block;
