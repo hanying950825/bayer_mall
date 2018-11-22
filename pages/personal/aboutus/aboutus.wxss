@@ -60,21 +60,6 @@
 .comp-address {
   padding: 15rpx;
   min-height: 50rpx;
-<<<<<<< HEAD
-}
-.address {
-  display: inline-block;
-  width: 75%;
-min-height: 17rpx;
-  line-height: 40rpx;
-  vertical-align: top;
-} .comp-address {
-  padding: 15rpx;
-  min-height: 50rpx;
-=======
-	padding: 15rpx;
-	min-height: 50rpx;
->>>>>>> master
 }
 .address {
 	display: inline-block;
