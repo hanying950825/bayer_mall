@@ -9,6 +9,11 @@ Page({
 		autoplay: true,
 		interval: 2500,
 		duration: 300,
+    checked: true,
+    icon: {
+      normal: '../../../images/icon3.png',
+      active: '../../../images/shoucang.png'
+    },
 		imgUrls: [
 			'../../../images/buou6.jpg',
 			'../../../images/buou5.jpg',
@@ -92,5 +97,10 @@ Page({
 	 */
 	onShareAppMessage: function () {
 
-	}
+	},
+  onChange(event) {
+    this.setData({
+      checked: event.detail
+    });
+  }
 })
