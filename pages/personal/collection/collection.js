@@ -10,7 +10,11 @@ Page({
     isLogin: true,
     imageURL: 'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'
   },
-
+	jumpToDetail: function() {
+		wx.navigateTo({
+			url: '../../category/detail/detail',
+		})
+	},
   /**
    * 生命周期函数--监听页面加载
    */
