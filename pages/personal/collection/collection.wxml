@@ -3,7 +3,7 @@
   <!-- 没有登陆 -->
   <view class="login-status" wx:if="{{!isLogin}}">
     <text>您还没有登陆呢,去登陆吧~</text>
-    <van-button type="danger" round bind:tap="goLogin">去登录</van-button>
+    <van-button type="danger" round bindtap="goLogin">去登录</van-button>
   </view>
   <!-- 没有收藏商品 -->
   <view class="none-collect" wx:if="{{isShowNone}}">
@@ -16,7 +16,7 @@
       <van-cell-group class="card-main">
         <van-card price="2.00" desc="描述信息" title="商品标题" thumb="{{ imageURL }}" >
           <view slot="footer">
-            <van-button round type="danger" size="small">查看详情</van-button>
+            <van-button round type="danger" size="small" bindtap="jumpToDetail">查看详情</van-button>
           </view>
         </van-card>
       </van-cell-group>

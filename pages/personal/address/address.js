@@ -7,7 +7,7 @@ Page({
   data: {
     name: '张三',
     phone: '138****8888',
-    address: '江苏省南京市xx区西乡街道xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+    address: '江苏省南京市玄武区孝陵卫街道双拜巷151号'
   },
 
   /**
