@@ -3,7 +3,7 @@
 .ads-list-card {
   background: #fff;
   margin: 20rpx;
-  padding: 20rpx;
+  padding: 10rpx 20rpx 0;
 }
 .main-name, .main-phone, .main-ads {
   display: inline-block;
@@ -17,28 +17,35 @@
   overflow: hidden;
   text-overflow:ellipsis;
   white-space: nowrap;
+	font-size: 26rpx;
 }
 .address {
   margin-top: 10rpx;
   border-bottom: 1px solid #F7F7FA;
-}
-.van-checkbox__label {
-  font-size: 30rpx;
+	color: rgb(161, 161, 165);
 }
 .function-ads {
   display: flex;
   justify-content: space-between;
+	height: 60rpx;
+	line-height: 50rpx;
+}
+.van-checkbox__label {
+  font-size: 28rpx;
 }
 .func-btn .delete, .func-btn .edit {
   display: inline-block;
-  font-size: 30rpx;
+  font-size: 28rpx;
+}
+.delete {
+	margin-right: 20rpx;
 }
 .func-btn .edit {
   margin-left: 10rpx;
 }
 .func-btn text {
   display: inline-block;
-  margin-left: 5rpx;
+  margin-left: 10rpx;
 }
 
 /* 底部按钮 */
@@ -51,5 +58,6 @@
   width: 100%;
 }
 .van-button {
-  width: 500rpx;
+  width: 96%;
+	margin: 0 auto;
 }

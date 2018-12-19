@@ -8,6 +8,7 @@
   font-size: 30rpx;
   display: inline-block;
   margin-left: 30rpx;
+	vertical-align: 8rpx;
 }
 .van-cell__value view{
   text-align: left;

@@ -43,6 +43,7 @@
 .all-my-order {
   background: #fff;
   margin-top: 15rpx;
+	margin-bottom: 10rpx;
 }
 .all-my-order .van-cell__value {
   color: #AFAFB0;
