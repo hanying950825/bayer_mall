@@ -32,6 +32,9 @@ swiper {
   font-size: 34rpx;
   vertical-align: middle;
 }
+.van-card {
+  margin-bottom: 10rpx;
+}
 .van-card__price {
   color: #FF0000;
 }

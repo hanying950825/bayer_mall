@@ -6,7 +6,7 @@
     <swiper indicator-dots="true" autoplay="true" interval="2000" duration="300">
       <block wx:for="{{imgUrls}}" wx:key="{{index}}">
         <swiper-item>
-          <image src="{{item}}" class="slide-image" height="500"/>
+          <image src="{{item.bannerImage}}" class="slide-image" height="500"/>
         </swiper-item>
       </block>
     </swiper>
@@ -25,17 +25,18 @@
       <view>全部</view>
     </view>
   </view>
-  <van-notice-bar left-icon="../../images/laba.png" text="xxx正在打车促销啦，快枪快枪12345667678，没错就是抢！"
-/>
+  <van-notice-bar left-icon="../../images/laba.png" text="{{noticeText}}"/>
   <view>
     <view class="list-tlt">
       <van-icon name="discount" />
       限时热销
     </view>
-    <van-card price="2.00" desc="描述信息" title="商品标题" thumb="{{ imageURL }}" bind:tap="onDetails">
-      <view slot="footer">
-        <van-button round type="danger" size="small" bind:tap="onDetails">查看详情</van-button>
-      </view>
-    </van-card>
+    <view wx:for="{{list}}" wx:key="{{index}}">
+      <van-card price="{{item.retailPrice}}" desc="{{item.goodsDesc}}" title="{{item.goodsName}}" thumb="{{item.mainImage}}" bind:tap="onDetails" data-id="{{item}}">
+        <view slot="footer">
+          <van-button round type="danger" size="small" bind:tap="onDetails" data-id="{{item}}">查看详情</van-button>
+        </view>
+      </van-card>
+    </view>
   </view>
 </view> 

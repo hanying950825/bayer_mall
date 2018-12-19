@@ -6,9 +6,6 @@
 .top .van-icon {
   font-size: 20rpx;
 }
-.top .van-icon-arrow, .top .van-icon-arrow-left {
-  transform:rotate(-90deg)
-}
 .all-list .van-card {
   margin-bottom: 10px;
 }

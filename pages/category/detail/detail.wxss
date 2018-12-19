@@ -36,6 +36,17 @@ swiper {
   font-weight:300;
 	margin: 10rpx;
 }
+.stock {
+  font-size: 30rpx;
+  margin-left: 40rpx;
+  color: #A0A0A0;
+}
+.shop-btn {
+  display: inline-block;
+}
+.van-button {
+  margin: 10rpx;
+}
 .details{
 	width: 100%;
 }

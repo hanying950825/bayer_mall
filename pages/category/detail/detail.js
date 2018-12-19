@@ -1,6 +1,6 @@
 // pages/category/detail/detail.js
+var app = getApp();
 Page({
-
 	/**
 	 * 页面的初始数据
 	 */
@@ -10,6 +10,10 @@ Page({
 		interval: 2500,
 		duration: 300,
     checked: true,
+    stock: 100,
+    show: false,
+    btnColor: 'default',
+    productList: [],
     icon: {
       normal: '../../../images/icon3.png',
       active: '../../../images/shoucang.png'
@@ -21,7 +25,7 @@ Page({
 			'../../../images/buou3.jpg'
 		],
 		goodsTitle: '这是一直颜值巨高的布偶猫,很可爱呦~~',
-		goodsPrice : 8888,
+    goodsPrice : 8888,
 		goodsPrivilegePrice: 20000,
 		goodsDetailImg:[
 			'../../../images/buou5.jpg',
@@ -61,7 +65,7 @@ Page({
 	 * 生命周期函数--监听页面显示
 	 */
 	onShow: function () {
-
+    this.onShopDetails()
 	},
 
 	/**
@@ -98,6 +102,52 @@ Page({
 	onShareAppMessage: function () {
 
 	},
+
+  // 加载商品详情
+  onShopDetails() {
+    const url = app.globalData.url
+    const shopDetail = app.globalData.shopDetail
+    const data = { goodsId: shopDetail.id }
+    const _this = this
+    wx.request({
+      url: url + '/mall/goods/detail',
+      method: 'POST',
+      data: data,
+      success: function(res) {
+        console.log(res.data.data)
+        const result = res.data.data
+        console.log(result.marketPrice)
+        _this.setData({
+          // imgUrls: result.subImages,
+          goodsTitle: result.goodsName,
+          goodsPrivilegePrice: result.retailPrice,
+          goodsPrice: result.marketPrice,
+          stock: result.stock,
+          productList: result.productList
+        })
+      }
+    })
+  },
+
+  // 加入购物车按钮
+  onShoppingCart() {
+    this.setData({
+      show: true
+    })
+  },
+
+  onClose() {
+    this.setData({
+      show: false
+    })
+  },
+
+  onSaveShop() {
+    this.setData({
+      btnColor: 'danger'
+    })
+  },
+
   onChange(event) {
     this.setData({
       checked: event.detail

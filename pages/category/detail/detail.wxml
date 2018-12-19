@@ -14,6 +14,7 @@
 		<text class="product-price-new">￥{{goodsPrice}}</text>
 		<text class="product-price-old">原价￥{{goodsPrivilegePrice}}</text>
 	</view>
+  <view class="stock">库存：{{stock}}</view>
 </view>
 
 <view class="details"> 
@@ -24,6 +25,12 @@
     </block>
     <view class="temp"></view>
   </scroll-view>
+
+  <van-action-sheet show="{{ show }}" title="加入购物车" bind:close="onClose">
+    <view class="shop-btn" wx:for="{{productList}}" wx:key="index">
+      <van-button plain round type="{{btnColor}}" data-id="{{item}}" bind:tap="onSaveShop">{{item.productName}}</van-button>
+    </view>
+  </van-action-sheet>
 
   <van-row class="footer-btn">
     <van-col span="4">
@@ -42,7 +49,7 @@
       <view>{{checked ? '收藏' : '已收藏'}}</view>
     </van-col>
     <van-col span="6">
-      <van-button type="warning" size="large">加入购物车</van-button>
+      <van-button type="warning" size="large" bind:tap="onShoppingCart">加入购物车</van-button>
     </van-col>
     <van-col span="6">
       <van-button type="danger" size="large">立即购买</van-button>
