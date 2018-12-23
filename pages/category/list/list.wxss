@@ -13,3 +13,8 @@
   color: red;
   font-size: 30rpx;
 }
+.none-data {
+  width: 100%;
+  text-align: center;
+  margin-top: 10%;
+}

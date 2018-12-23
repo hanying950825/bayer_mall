@@ -12,6 +12,7 @@ Page({
     isShowSearch: true,
     count: 10,
     searchValue: '',
+    categoryId: 0,
     list: [],
     oParams: {
       page: 0,
@@ -23,11 +24,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-      isShowSearch: app.globalData.isSearch,
-      isShowList: app.globalData.isShowList
-    })
-    this._fetchList(this.data.active)
+    if (app.globalData.categoryId == 0) {
+      this.setData({
+        isShowSearch: app.globalData.isSearch,
+        isShowList: app.globalData.isShowList
+      })
+    } else {
+      this.setData({
+        isShowSearch: false,
+        isShowList: true
+      })
+    }
   },
 
   /**
@@ -41,7 +48,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    this._fetchList(this.data.active)
   },
 
   /**
@@ -81,6 +88,7 @@ Page({
 
   _fetchList(active) {
     const searchType = app.globalData.searchType
+    const categoryId = app.globalData.categoryId
     const url = app.globalData.url
     const _this = this
     if (_this.data.count == 10) {
@@ -194,6 +202,40 @@ Page({
             })
           }
         })
+      } else if (categoryId != 0) {
+        let data = {}
+        data.page = _this.data.oParams.page
+        data.size = _this.data.oParams.size
+        data.categoryId = [categoryId]
+        wx.request({
+          url: url + '/mall/goods/list',
+          method: 'POST',
+          data: data,
+          success: function(e) {
+            const result = e.data.data.data
+            console.log(result)
+            if (result.length) {
+              _this.setData({
+                list: result,
+                count: e.data.data.counts,
+                categoryId: categoryId
+              })
+              app.globalData.categoryId = 0
+              let i = _this.data.oParams.page
+              i++
+              _this.setData({
+                oParams: {
+                  page: i,
+                  size: 10
+                }
+              })
+            } else {
+              _this.setData({
+                isShowList: false
+              })
+            }
+          }
+        })
       } else {
         let data = {}
         data.page = _this.data.oParams.page
@@ -205,6 +247,9 @@ Page({
           data.priceOrder = 'DESC'
         } else if (active == 3) {
           data.salesOrder = 'DESC'
+        }
+        if (this.data.categoryId != 0) {
+          data.categoryId = [this.data.categoryId]
         }
         wx.request({
           url: url + '/mall/goods/list',

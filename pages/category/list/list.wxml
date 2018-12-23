@@ -24,4 +24,5 @@
       />
     </view>
   </view>
+  <view wx:if="{{!isShowList}}" class="none-data">暂无数据</view>
 </view>

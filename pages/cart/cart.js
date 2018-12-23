@@ -1,5 +1,6 @@
 // pages/cart/cart.js
-var Dialog = require('../../dist/dialog/dialog');    
+var Dialog = require('../../dist/dialog/dialog')
+const app = getApp()  
 Page({
   
 	/**
@@ -8,9 +9,11 @@ Page({
 	data: {
     isClean: false,
     checked: true,
-    list: ['1','2'],
-    result: ['1','2'],
-    imageURL: 'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'
+    list: [],
+    value: [],
+    result: [],
+    imageURL: 'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg',
+    totalPrice: 0,
 	},
 
 	/**
@@ -31,7 +34,7 @@ Page({
 	 * 生命周期函数--监听页面显示
 	 */
 	onShow: function () {
-
+    this.onCartList()
 	},
 
 	/**
@@ -93,12 +96,13 @@ Page({
     if (event.detail == true) {
       this.setData({
         checked: event.detail,
-        result: _this.data.list
+        value: _this.data.result
       })
     } else {
       this.setData({
         checked: event.detail,
-        result: []
+        value: [],
+        totalPrice: 0
       })
     }
     
@@ -106,9 +110,9 @@ Page({
   // 是否选择单件商品
   onGoodsChange(event) {
     this.setData({
-      result: event.detail
+      value: event.detail
     })
-    if (this.data.result.length == this.data.list.length) {
+    if (this.data.value.length == this.data.result.length) {
       this.setData({
         checked: true
       })
@@ -125,6 +129,30 @@ Page({
   onSubmit() {
     wx.navigateTo({
       url: `../cart/trueOrder/trueOrder`,
+    })
+  },
+
+  onCartList() {
+    const url = app.globalData.url
+    const _this = this
+    wx.request({
+      url: url + '/user/cart/list',
+      method: 'POST',
+      success: function(data) {
+        _this.setData({
+          list: data.data.data.cartProductList,
+          totalPrice: data.data.data.cartTotalPrice * 100
+        })
+        let result = []
+        for (let i = 0; i < data.data.data.cartProductList.length; i++) {
+          result.push(data.data.data.cartProductList[i].id.toString())
+        }
+        _this.setData({
+          result: result,
+          value: result
+        })
+
+      }
     })
   }
 })

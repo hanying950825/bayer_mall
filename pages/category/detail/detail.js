@@ -9,7 +9,7 @@ Page({
 		autoplay: true,
 		interval: 2500,
 		duration: 300,
-    checked: true,
+    checked: false,
     stock: 100,
     show: false,
     btnColor: 'default',
@@ -36,8 +36,99 @@ Page({
 			'../../../images/buou4.jpg',
 			'../../../images/buou6.jpg'
 		],
-		info: 5
+		info: 5,
+    cartNum: 5,
+    showModalStatus: false,//是否显示
+    gg_id: 0,//规格ID
+    gg_txt: '',//规格文本
+    gg_price: 0,//规格价格
+    guigeList: [{ guige: '100', price: '150' }, { guige: '200', price: '150' }, { guige: '300', price: '150' }],
+    num: 1,//初始数量
 	},
+
+  filter: function (e) {
+    var self = this, id = e.currentTarget.dataset.id, txt = e.currentTarget.dataset.txt, price = e.currentTarget.dataset.price
+    self.setData({
+      gg_id: id,
+      gg_txt: txt,
+      gg_price: price
+    });
+  },
+
+  /* 点击减号 */
+  bindMinus: function () {
+    var num = this.data.num;
+    // 如果大于1时，才可以减  
+    if (num > 1) {
+      num--;
+    }
+    // 只有大于一件的时候，才能normal状态，否则disable状态  
+    var minusStatus = num <= 1 ? 'disabled' : 'normal';
+    // 将数值与状态写回  
+    this.setData({
+      num: num,
+      minusStatus: minusStatus
+    });
+  },
+
+  /* 点击加号 */
+  bindPlus: function () {
+    var num = this.data.num;
+    // 不作过多考虑自增1  
+    num++;
+    // 只有大于一件的时候，才能normal状态，否则disable状态  
+    var minusStatus = num < 1 ? 'disabled' : 'normal';
+    // 将数值与状态写回  
+    this.setData({
+      num: num,
+      minusStatus: minusStatus
+    });
+  },
+
+  //显示对话框
+  showModal: function () {
+    // 显示遮罩层
+    var animation = wx.createAnimation({
+      duration: 200,
+      timingFunction: "linear",
+      delay: 0
+    })
+    this.animation = animation
+    animation.translateY(300).step()
+    this.setData({
+      animationData: animation.export(),
+      showModalStatus: true
+    })
+    setTimeout(function () {
+      animation.translateY(0).step()
+      this.setData({
+        animationData: animation.export()
+      })
+    }.bind(this), 200)
+  },
+
+  //隐藏对话框
+  hideModal: function () {
+    // 隐藏遮罩层
+    var animation = wx.createAnimation({
+      duration: 200,
+      timingFunction: "linear",
+      delay: 0
+    })
+    this.animation = animation
+    animation.translateY(300).step()
+    this.setData({
+      animationData: animation.export(),
+    })
+    setTimeout(function () {
+      animation.translateY(0).step()
+      this.setData({
+        animationData: animation.export(),
+        showModalStatus: false
+      })
+    }.bind(this), 200)
+  },
+
 	//预览图片
   previewImage: function (e) {
     var current = e.target.dataset.src;
@@ -66,6 +157,7 @@ Page({
 	 */
 	onShow: function () {
     this.onShopDetails()
+    this.onCartNum()
 	},
 
 	/**
@@ -114,16 +206,33 @@ Page({
       method: 'POST',
       data: data,
       success: function(res) {
-        console.log(res.data.data)
         const result = res.data.data
-        console.log(result.marketPrice)
+        console.log(result)
         _this.setData({
-          // imgUrls: result.subImages,
+          imgUrls: result.subImages,
           goodsTitle: result.goodsName,
           goodsPrivilegePrice: result.retailPrice,
           goodsPrice: result.marketPrice,
           stock: result.stock,
-          productList: result.productList
+          productList: result.productList,
+          goodsDetailImg: result.detailImages,
+          guigeList: result.productList,
+          // checked: result.favorite
+        })
+      }
+    })
+  },
+  
+  // 购物车数量
+  onCartNum() {
+    const url = app.globalData.url
+    const _this = this
+    wx.request({
+      url: url + '/user/cart/amount',
+      method: 'POST',
+      success: function(data) {
+        _this.setData({
+          cartNum: data.data.data
         })
       }
     })
@@ -149,8 +258,44 @@ Page({
   },
 
   onChange(event) {
+    const shopDetail = app.globalData.shopDetail
+    const url = app.globalData.url
+    const _this = this
+    console.log(shopDetail)
+    console.log(event.detail)
+    if (event.detail == true) {
+      wx.request({
+        url: url + `/user/favorite/add/${shopDetail.id}`,
+        method: 'POST',
+        success: function(data) {
+          _this.setData({
+            checked: event.detail
+          })
+        }
+      })
+    } else {
+      wx.request({
+        url: url + `/user/favorite/add/${shopDetail.id}`,
+        method: 'POST',
+        success: function (data) {
+          _this.setData({
+            checked: event.detail
+          })
+        }
+      })
+    }
     this.setData({
       checked: event.detail
-    });
+    })
+  },
+
+  onCartPage() {
+    wx.switchTab({
+      url: './../../cart/cart',
+      fail: function (e) {
+        console.log(e)
+        console.log(321123)
+      }
+    })
   }
 })

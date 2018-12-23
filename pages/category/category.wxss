@@ -23,10 +23,7 @@
   width: 160rpx;
   height: 160rpx;
   display: block;
-}
-van-col {
-  text-align: center;
-  font-size: 30rpx;
+  margin: 0 auto;
 }
 /* 不存在内容 样式 */
 .nodata_text {
@@ -34,3 +31,12 @@ van-col {
   font-size: 14px;  
   text-align: center;  
 } 
+.col-8 {
+  width: 33%;
+  text-align: center;
+  display: inline-block;
+}
+.col-tit {
+  font-size: 26rpx;
+  margin-top: 10rpx
+}

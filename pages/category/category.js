@@ -6,7 +6,9 @@ Page({
    */
 	data: {
 		active:0,
-    isShowClassify: true
+    isShowClassify: true,
+    firstClassify: [],
+    secClassify: []
 	},
   
   /**
@@ -27,7 +29,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
 	onShow: function () {
-
+    this.onClassify()
 	},
 
   /**
@@ -64,11 +66,28 @@ Page({
 	onShareAppMessage: function () {
 
   }, 
+
+  onClassify() {
+    const url = app.globalData.url
+    const _this = this
+    wx.request({
+      url: url + '/mall/category/list/0',
+      method: 'POST',
+      success: function(data) {
+        console.log(data.data.data[0].next)
+        _this.setData({
+          firstClassify: data.data.data,
+          secClassify: data.data.data[0].next
+        })
+      }
+    })
+  },
+
   onChange(event) {
-    console.log(event)
-    wx.showToast({
-      icon: 'none',
-      title: `切换至第${event.detail}项`
+    console.log(event.detail)
+    console.log(this.data.firstClassify[event.detail])
+    this.setData({
+      secClassify: this.data.firstClassify[event.detail].next
     })
   },
   onClassifyList(classify) {
@@ -77,6 +96,14 @@ Page({
     app.globalData.searchType = classify
     wx.navigateTo({
       url: `../category/list/list`,
+    })
+  },
+  onShopsList(obj) {
+    console.log(obj.target.dataset.id.id)
+    app.globalData.categoryId = obj.target.dataset.id.id
+    app.globalData.searchType = ''
+    wx.navigateTo({
+      url: 'list/list',
     })
   }
 })

@@ -2,29 +2,18 @@
 <view class="container-classify">
   <!--左侧栏-->
   <van-badge-group :active="active" bind:change="onChange">
-    <van-badge title="麦克风"/>
-    <van-badge title="音响"/>
-    <van-badge title="灯光"/>
-    <van-badge title="机柜"/>
+    <van-badge wx:for="{{firstClassify}}" wx:key="index" title="{{item.name}}"/>
   </van-badge-group>
   <!-- 右侧内容 -->
   <view class="right-msg">
     <!-- 如果有数据则显示 -->
     <view clss="classify-list" wx:if="isShowClassify">
-      <van-row>
-        <van-col span="8" bind:tap="onClassifyList">
-          <image src="../../images/cart_select.png" class="classify-img"></image>
-          xxx系例
-        </van-col>
-        <van-col span="8">
-          <image src="../../images/cart_select.png" class="classify-img"></image>
-          xxx系列
-        </van-col>
-        <van-col span="8">
-          <image src="../../images/cart_select.png" class="classify-img"></image>
-          xxx系列
-        </van-col>
-      </van-row>
+      <view class="col-8" wx:for="{{secClassify}}" wx:key="index">
+        <image src="{{item.icon}}" class="classify-img" bind:tap="onShopsList" data-id="{{item}}"></image>
+        <view class="col-tit">
+          {{item.name}}
+        </view>
+      </view>
     </view>
     <!--如果无数据，则显示-->
     <view class="nodata_text" wx:else>该分类暂无数据</view>

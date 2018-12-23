@@ -60,6 +60,7 @@ App({
     active: 0, // 判断订单列表页是哪个页面
 		phoneNumber: '13631183760', //商家号码
     shopDetail: {}, // 商品详情
+    categoryId: 0,
     url: 'http://seasins.vipgz1.idcfengye.com/baiermall'
   }
 })

@@ -65,6 +65,9 @@
 .main-list .van-checkbox {
   margin-left: 10px;
 }
+.main-list {
+  margin-bottom: 110rpx;
+}
 .van-card .van-card__content {
   display: block;
 }
