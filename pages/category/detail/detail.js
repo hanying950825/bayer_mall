@@ -1,5 +1,6 @@
 // pages/category/detail/detail.js
 var app = getApp();
+import Toast from '../../../dist/toast/toast'
 Page({
 	/**
 	 * 页面的初始数据
@@ -13,6 +14,7 @@ Page({
     stock: 100,
     show: false,
     btnColor: 'default',
+    goCartTit: '加入购物车',
     productList: [],
     icon: {
       normal: '../../../images/icon3.png',
@@ -43,68 +45,82 @@ Page({
     gg_txt: '',//规格文本
     gg_price: 0,//规格价格
     guigeList: [{ guige: '100', price: '150' }, { guige: '200', price: '150' }, { guige: '300', price: '150' }],
-    num: 1,//初始数量
+    shopsData: {},
+    shopsNum: 1
 	},
 
   filter: function (e) {
-    var self = this, id = e.currentTarget.dataset.id, txt = e.currentTarget.dataset.txt, price = e.currentTarget.dataset.price
-    self.setData({
+    var _this = this, 
+      id = e.currentTarget.dataset.id.id, 
+      txt = e.currentTarget.dataset.id.productName, 
+      price = e.currentTarget.dataset.id.retailPrice
+    _this.setData({
+      shopsData: e.currentTarget.dataset.id,
       gg_id: id,
       gg_txt: txt,
-      gg_price: price
-    });
-  },
-
-  /* 点击减号 */
-  bindMinus: function () {
-    var num = this.data.num;
-    // 如果大于1时，才可以减  
-    if (num > 1) {
-      num--;
-    }
-    // 只有大于一件的时候，才能normal状态，否则disable状态  
-    var minusStatus = num <= 1 ? 'disabled' : 'normal';
-    // 将数值与状态写回  
-    this.setData({
-      num: num,
-      minusStatus: minusStatus
+      gg_price: price,
+      shopsNum: 1
     });
   },
 
   /* 点击加号 */
-  bindPlus: function () {
-    var num = this.data.num;
-    // 不作过多考虑自增1  
-    num++;
-    // 只有大于一件的时候，才能normal状态，否则disable状态  
-    var minusStatus = num < 1 ? 'disabled' : 'normal';
-    // 将数值与状态写回  
+  bindPlus: function (e) {
     this.setData({
-      num: num,
-      minusStatus: minusStatus
-    });
+      shopsNum: e.detail
+    })
   },
 
   //显示对话框
-  showModal: function () {
-    // 显示遮罩层
-    var animation = wx.createAnimation({
-      duration: 200,
-      timingFunction: "linear",
-      delay: 0
-    })
-    this.animation = animation
-    animation.translateY(300).step()
-    this.setData({
-      animationData: animation.export(),
-      showModalStatus: true
-    })
-    setTimeout(function () {
-      animation.translateY(0).step()
-      this.setData({
-        animationData: animation.export()
+  showModal: function (e) {
+    const cartTxt = e.target.dataset.id
+    const shopDetail = app.globalData.shopDetail
+
+    if (this.data.productList != []) {
+      if (cartTxt == '购物车') {
+        this.setData({
+          goCartTit: '加入购物车'
+        })
+      } else {
+        this.setData({
+          goCartTit: '立即购买'
+        })
+      }
+      // 显示遮罩层
+      var animation = wx.createAnimation({
+        duration: 200,
+        timingFunction: "linear",
+        delay: 0
       })
-    }.bind(this), 200)
+      this.animation = animation
+      animation.translateY(300).step()
+      this.setData({
+        animationData: animation.export(),
+        showModalStatus: true
+      })
+      setTimeout(function () {
+        animation.translateY(0).step()
+        this.setData({
+          animationData: animation.export()
+        })
+      }.bind(this), 200)
+    } else {
+      if (cartTxt == '购物车') {
+        wx.request({
+          url: url + '/user/cart/add',
+          method: 'POST',
+          data: { productId: _this.data.shopsData.id, goodsId: shopDetail.id, amount: 1 },
+          success: function (data) {
+            Toast.success({ mask: true, message: '加入成功！', duration: 1000 })
+            _this.hideModal()
+          }
+        })
+      } else {
+        app.globalData.amount = _this.data.shopsNum
+        wx.navigateTo({
+          url: `../../cart/trueOrder/trueOrder`,
+        })
+      }
+    }
   },
 
   //隐藏对话框
@@ -207,7 +223,6 @@ Page({
       data: data,
       success: function(res) {
         const result = res.data.data
-        console.log(result)
         _this.setData({
           imgUrls: result.subImages,
           goodsTitle: result.goodsName,
@@ -217,7 +232,7 @@ Page({
           productList: result.productList,
           goodsDetailImg: result.detailImages,
           guigeList: result.productList,
-          // checked: result.favorite
+          checked: result.favorite
         })
       }
     })
@@ -261,8 +276,6 @@ Page({
     const shopDetail = app.globalData.shopDetail
     const url = app.globalData.url
     const _this = this
-    console.log(shopDetail)
-    console.log(event.detail)
     if (event.detail == true) {
       wx.request({
         url: url + `/user/favorite/add/${shopDetail.id}`,
@@ -271,6 +284,7 @@ Page({
           _this.setData({
             checked: event.detail
           })
+          Toast.success({ mask: true, message: '收藏成功！', duration: 1000 })
         }
       })
     } else {
@@ -281,6 +295,7 @@ Page({
           _this.setData({
             checked: event.detail
           })
+          Toast.success({ mask: true, message: '取消收藏！', duration: 1000 })
         }
       })
     }
@@ -291,11 +306,34 @@ Page({
 
   onCartPage() {
     wx.switchTab({
-      url: './../../cart/cart',
-      fail: function (e) {
-        console.log(e)
-        console.log(321123)
-      }
+      url: './../../cart/cart'
     })
+  },
+
+  addCart(opt) {
+    const url = app.globalData.url
+    const shopDetail = app.globalData.shopDetail
+    const _this = this
+
+    if (_this.data.goCartTit == '加入购物车') {
+      if (_this.data.shopsData.id) {
+        wx.request({
+          url: url + '/user/cart/add',
+          method: 'POST',
+          data: { productId: _this.data.shopsData.id, goodsId: shopDetail.id, amount: _this.data.shopsNum},
+          success: function(data) {
+            Toast.success({ mask: true, message: '加入成功！', duration: 1000 })
+            _this.hideModal()
+          }
+        })
+      } else {
+        Toast.fail({ mask: true, message: '请先选择商品', duration: 1000 })
+      }
+    } else {
+      app.globalData.amount = _this.data.shopsNum
+      wx.navigateTo({
+        url: `../../cart/trueOrder/trueOrder`,
+      })
+    }
   }
 })

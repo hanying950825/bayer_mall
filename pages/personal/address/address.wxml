@@ -1,30 +1,36 @@
 <!--pages/personal/address/address.wxml-->
 <view class="container-ads">
-  <view class="ads-list" v-if="{{isShow}}">
-    <view class="ads-list-card">
+  <view class="ads-list" wx:if="{{isShow}}">
+    <view class="ads-list-card" wx:for="{{adsList}}" wx:key="{{index}}">
       <view class="ads-msg">
-        <text class="main-name">{{name}}</text>
-        <text class="main-phone">{{phone}}</text>
+        <text class="main-name">{{item.name}}</text>
+        <text class="main-phone">{{item.phone}}</text>
       </view>
       <view class="address">
-        <text class="main-ads">{{address}}</text>
+        <text class="main-ads">{{item.province+item.city+item.district+item.address}}</text>
       </view>
       <view class="function-ads">
-        <van-checkbox value="true" checked-color="red">默认地址</van-checkbox>
+        <van-checkbox value="{{item.isDefault}}" checked-color="red">默认地址</van-checkbox>
         <view class="func-btn">
-          <view class="delete" bind:tap="onDelete">
+          <view class="delete" bind:tap="onDelete" data-id="{{item.id}}">
             <van-icon name="delete"></van-icon>
             <text>删除</text>
           </view>
-          <view class="edit">
+          <view class="edit" bind:tap="onEdit" data-id="{{item.id}}">
             <van-icon name="records"></van-icon>
             <text>编辑</text>
+          </view>
+          <view class="default" bind:tap="onDefault" data-id="{{item.id}}">
+            <van-icon name="exchange"></van-icon>
+            <text>设为默认</text>
           </view>
         </view>
       </view>
     </view>
   </view>
+  <view class="none-list" wx:else>请先添加地址吧~</view>
   <view class="footer-btn">
     <van-button type="danger" class="add-new-ads" bind:tap="onAddAddress">添加新地址</van-button>
   </view>
+  <van-toast id="van-toast" />
 </view>

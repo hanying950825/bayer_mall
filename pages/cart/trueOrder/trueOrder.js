@@ -1,6 +1,6 @@
 // pages/cart/trueOrder/trueOrder.js
+var app = getApp();
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -9,11 +9,14 @@ Page({
     ownName: '韩莹',
     ownPhone: '173****6621',
     ownAdd: '江苏省南京市玄武区xxxx路xxx栋xx号cxdjfng',
+    defaultAdd: {},
     iconStyle: 'arrow',
     goodsLength: '1', // 商品个数
     totalPrice: '4', // 总价
     postage: '0', // 邮费
-    imageURL: 'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'
+    orderList: [],
+    imageURL: 'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg',
+    showAdd: false
   },
 
   /**
@@ -34,7 +37,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    this._fetchOrderDetail()
   },
 
   /**
@@ -71,10 +74,58 @@ Page({
   onShareAppMessage: function () {
   
   },
+
+  // 获取商品信息
+  _fetchOrderDetail() {
+    const url = app.globalData.url
+    const shopDetail = app.globalData.shopDetail
+    const amount = app.globalData.amount
+    const _this = this
+    let data = {}
+    console.log(shopDetail)
+    if (shopDetail != {}) {
+      const data = { goodsId: shopDetail.goodsId, productId: shopDetail.productId, amount: amount }
+    }
+    wx.request({
+      url: url + '/user/order/confirmInfo',
+      method: 'POST',
+      data: data,
+      success: function(data) {
+        console.log(data.data.data)
+        const res = data.data.data
+        _this.setData({
+          totalPrice: res.productTotalPrice,
+          postage: res.postagePrice,
+          orderList: res.orderItemList,
+          defaultAdd: res.defaultAddress
+        })
+        app.globalData.defaultAdd = _this.data.defaultAdd
+        if (_this.data.defaultAdd) {
+          _this.setData({
+            ownName: res.defaultAddress.name,
+            ownPhone: res.defaultAddress.phone,
+            ownAdd: res.defaultAddress.province + res.defaultAddress.city + res.defaultAddress.district + res.defaultAddress.address,
+            showAdd: true
+          })
+        } else if (_this.data.defaultAdd == {}) {
+          _this.setData({
+            showAdd: false
+          })
+        }
+      }
+    })
+  },
   // 去支付
   onSubmitOrder() {
     wx.navigateTo({
       url: '../success/success',
+    })
+  },
+
+  // 切换地址
+  onChangeAdd() {
+    wx.navigateTo({
+      url: '../../personal/address/address',
     })
   }
 })

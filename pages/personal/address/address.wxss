@@ -33,14 +33,14 @@
 .van-checkbox__label {
   font-size: 28rpx;
 }
-.func-btn .delete, .func-btn .edit {
+.func-btn .delete, .func-btn .edit, .func-btn .default{
   display: inline-block;
   font-size: 28rpx;
 }
 .delete {
 	margin-right: 20rpx;
 }
-.func-btn .edit {
+.func-btn .edit, .func-btn .default {
   margin-left: 10rpx;
 }
 .func-btn text {
@@ -60,4 +60,15 @@
 .van-button {
   width: 96%;
 	margin: 0 auto;
+}
+.container-ads {
+  width: 100%;
+  height: 100%;
+}
+.none-list {
+  text-align: center;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

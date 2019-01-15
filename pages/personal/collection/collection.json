@@ -5,7 +5,8 @@
     "van-swipe-cell": "../../../dist/swipe-cell/index",
     "van-checkbox": "../../../dist/checkbox/index",
     "van-checkbox-group": "../../../dist/checkbox-group/index",
-    "van-submit-bar": "../../../dist/submit-bar/index"
+    "van-submit-bar": "../../../dist/submit-bar/index",
+    "van-toast": "../../../dist/toast/index"
   },
   "navigationBarTitleText": "收藏列表"
 }

@@ -6,21 +6,22 @@
     <van-button type="danger" round bindtap="goLogin">去登录</van-button>
   </view>
   <!-- 没有收藏商品 -->
-  <view class="none-collect" wx:if="{{isShowNone}}">
+  <view class="none-collect" wx:if="{{!isShowList}}">
     <text>您还没有收藏哦,快去逛逛吧~</text>
     <van-button type="danger" round bind:tap="goHome">去逛逛</van-button>
   </view>
   <!-- 收藏列表存在的情况 -->
   <view class="collect-list" wx:if="{{isShowList}}">
-    <van-swipe-cell id="swipe-cell" right-width="{{ 65 }}" async-close bind:close="onClose">
+    <van-swipe-cell id="swipe-cell" right-width="{{ 65 }}" async-close bind:close="onClose"  wx:for="{{collectList}}" wx:key="{{index}}" data-id="{{item}}">
       <van-cell-group class="card-main">
-        <van-card price="2.00" desc="描述信息" title="商品标题" thumb="{{ imageURL }}" >
+        <van-card price="{{item.retailPrice}}" title="{{item.goodsName}}" thumb="{{ item.mainImage }}">
           <view slot="footer">
-            <van-button round type="danger" size="small" bindtap="jumpToDetail">查看详情</van-button>
+            <van-button round type="danger" size="small" bindtap="jumpToDetail" data-id="{{item}}">查看详情</van-button>
           </view>
         </van-card>
       </van-cell-group>
       <view slot="right">删除</view>
     </van-swipe-cell>
   </view>
+  <van-toast id="van-toast"/>
 </view>

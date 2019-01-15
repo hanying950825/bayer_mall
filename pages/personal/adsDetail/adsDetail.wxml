@@ -6,11 +6,16 @@
     </van-cell-group>
     <van-cell-group>
       <van-field value="{{ userPhone }}" clearable placeholder="手机号" maxlength="26" type="number" bind:blur="onGetPhone"/>
-      <van-field value="{{ userLocal }}" clearable placeholder="选择地区" bind:focus="onGetLocal"/>
-      <van-popup show="{{ show }}" bind:close="onClose" position="bottom">
-        <van-area area-list="{{ areaList }}" value="{{location}}" bind:confirm="onChangeLocal"/>
-      </van-popup>
+    </van-cell-group>
+    <van-cell-group>
+      <van-field value="{{ userLocal }}" clearable placeholder="选择地区" bind:focus="onGetLocal">
+      <picker mode="region" value="{{regionList}}" bindchange='onChangeRegion' disabled="true"></picker>
+      </van-field>
+    </van-cell-group>
+    <van-cell-group>
       <van-field value="{{ userAddress }}" clearable placeholder="详细地址(最多26个字符)" maxlength="26" bind:blur="onGetAds"/>
+    </van-cell-group>
+    <van-cell-group>
       <van-field value="{{ userPostCode }}" clearable placeholder="邮编" maxlength="6" bind:blur="onGetPostCode"/>
     </van-cell-group>
   </view>

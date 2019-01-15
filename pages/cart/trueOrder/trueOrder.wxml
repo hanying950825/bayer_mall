@@ -6,7 +6,7 @@
       <van-cell title="收货地址" icon="location" border="{{ false }}" is-link value="点击添加收货地址" wx:if="{{isEmpty}}"/>
       <van-cell icon="location" border="{{ false }}" is-link wx:if="{{!isEmpty}}">
         <view class="choose-add">
-          <view class="use-add">
+          <view class="use-add" bindtap='onChangeAdd' wx:if="{{showAdd}}">
             <view clsss="name">
               <text class="name-tit">收货人：</text>
               <text class="own-name">{{ownName}}</text>
@@ -17,6 +17,11 @@
               <text class="own-add">{{ownAdd}}</text>
             </view>
           </view>
+          <view class="choose-add">
+            <view class="use-add" bindtap='onChangeAdd' wx:if="{{!showAdd}}">
+              <view>暂时还没有地址哦~去新增吧~</view>
+            </view>
+          </view>
         </view>
       </van-cell>
     </van-cell-group>
@@ -24,19 +29,15 @@
   <!-- 购买商品列表 -->
   <view class="goods-list">
     <van-cell-group>
-      <van-cell title="满xxx包邮"/>
-      <van-cell>
+      <van-cell title="满300包邮"/>
+      <van-cell wx:for="{{orderList}}" wx:key="{{index}}">
         <van-card
-          num="2"
-          price="2.00"
-          desc="描述信息"
-          title="商品标题"
-          thumb="{{ imageURL }}"
+          num="{{item.amount}}"
+          price="{{retailPrice}}"
+          desc="{{item.productName}}"
+          title="{{item.goodsName}}"
+          thumb="{{ item.goodsImage }}"
         />
-      </van-cell>
-      <van-cell>
-        显示所有
-        <van-icon name="{{iconStyle}}" />
       </van-cell>
     </van-cell-group>
   </view>

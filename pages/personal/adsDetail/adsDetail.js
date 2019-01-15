@@ -11,6 +11,7 @@ Page({
     userAddress: '',
     show: false,
     location: [],
+    regionList: [],
     areaList: {
       province_list: {
         110000: '北京市',
@@ -122,5 +123,8 @@ Page({
       show: false,
       userLocal: location
     });
+  },
+  onChangeRegion() {
+    
   }
 })

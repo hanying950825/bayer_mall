@@ -1,19 +1,26 @@
 // pages/personal/collection/collection.js
+var Dialog = require('../../../dist/dialog/dialog')
+import Toast from '../../../dist/toast/toast'
+var app = getApp();
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
     isShowList: true,
-    isShowNone: false,
     isLogin: true,
-    imageURL: 'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'
+    imageURL: 'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg',
+    oParams: {
+      page: 0,
+      size: 10
+    },
+    collectList: []
   },
-	jumpToDetail: function() {
-		wx.navigateTo({
-			url: '../../category/detail/detail',
-		})
+	jumpToDetail: function(obj) {
+    app.globalData.shopDetail = obj.target.dataset.id
+    wx.navigateTo({
+      url: '../../category/detail/detail',
+    })
 	},
   /**
    * 生命周期函数--监听页面加载
@@ -33,7 +40,14 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    this.setData({
+      oParams: {
+        size: 10,
+        page: 0,
+        collectList: []
+      }
+    })
+    this._fetchCollectList()
   },
 
   /**
@@ -80,6 +94,82 @@ Page({
   goLogin() {
     wx.switchTab({
       url: '../personal',
+    })
+  },
+
+  // 右划点击删除按钮
+  onClose(event) {
+    const shops = event.target.dataset.id
+    const { position, instance } = event.detail;
+    const url = app.globalData.url
+    const _this = this
+
+    switch (position) {
+      case 'left':
+      case 'cell':
+        instance.close();
+        break;
+      case 'right':
+        wx.showModal({
+          title: '提示',
+          content: '确定删除吗？',
+          success: function (obj) {
+            instance.close();
+            if (obj.confirm) {
+              wx.request({
+                url: url + `/user/favorite/cancel/${shops.id}`,
+                method: 'POST',
+                data: { goodsId: shops.goodsId, productId: shops.productId },
+                success: function (data) {
+                  // const res = data.data.data
+                  Toast.success({ mask: true, message: '删除成功！', duration: 1000 })
+                  _this.setData({
+                    oParams: {
+                      size: 10,
+                      page: 0,
+                      collectList: []
+                    }
+                  })
+                  _this._fetchCollectList()
+                  
+                }
+              })
+            }
+          }
+        })
+        break;
+    }
+  },
+
+  _fetchCollectList() {
+    const url = app.globalData.url
+    const _this = this
+    wx.request({
+      url: url + `/user/favorite/list/${_this.data.oParams.page}-${_this.data.oParams.size}`,
+      method: 'POST',
+      success: function(data) {
+        const res = data.data.data.data
+        if (res.length > 0 && _this.data.collectList) {
+          var momentList = _this.data.collectList
+          for (var i = 0; i < res.length; i++) {
+            momentList.push(res[i]);
+          }
+          _this.setData({
+            collectList: momentList,
+            isShowList: true
+          })
+          _this.setData({
+            oParams: {
+              size: 10,
+              page: _this.data.oParams.page + 1
+            }
+          })
+        } else if (res.length <= 0 && _this.data.collectList.length == 0) {
+          _this.setData({
+            isShowList: false
+          })
+        }
+      }
     })
   }
 })

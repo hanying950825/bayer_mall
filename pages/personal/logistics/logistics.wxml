@@ -7,89 +7,108 @@
       </view>
       <view class="all-order" wx:if="{{isShowList}}">
         <van-card
-          num="2"
-          tag="待支付"
-          price="2.00"
-          desc="描述信息"
-          title="订单编号"
-          thumb="{{ imageURL }}"
-          bind:tap="onOrderDetail"
+          num="{{item.amount}}"
+          tag="{{item.orderStatusDesc}}"
+          price="{{item.productTotalPrice}}"
+          desc="{{ item.orderItemList.length>1?item.orderItemList[0].goodsName + '等多个商品':item.orderItemList[0].goodsName }}"
+          title="编号：{{item.orderNo}}"
+          thumb="{{ item.orderItemList[0].goodsImage }}"
+          wx:for="{{orderList}}"
+          wx:key="{{index}}"
         >
-          <view slot="footer">
-            <van-button type="danger" size="mini" bind:tap="onGoPay">去支付</van-button>
-            <van-button size="mini" bind:tap="onCancelOrder">取消</van-button>
+          <view slot="footer" wx:if="{{item.orderStatusDesc == '未付款'}}">
+            <van-button type="danger" size="mini" bind:tap="onGoPay" data-id="{{item}}">去支付</van-button>
+            <van-button type="danger" size="mini" bind:tap="onOrderDetail" data-id="{{item.orderNo}}">查看详情</van-button>
+            <van-button size="mini" bind:tap="onCancelOrder" data-id="{{item.orderNo}}">取消</van-button>
+          </view>
+          <view slot="footer" wx:if="{{item.orderStatusDesc !== '未付款' && item.orderStatusDesc !== '未发货' && item.orderStatusDesc !== '已发货'}}">
+            <van-button type="danger" size="mini" bind:tap="onOrderDetail" data-id="{{item.orderNo}}">查看详情</van-button>
+          </view>
+           <view slot="footer" wx:if="{{item.orderStatusDesc == '已发货'}}">
+            <van-button type="danger" size="mini" bind:tap="onPostMsg">查看物流</van-button>
+            <van-button type="danger" size="mini" bind:tap="onOrderDetail" data-id="{{item.orderNo}}">查看详情</van-button>
           </view>
         </van-card>
       </view>
     </van-tab>
     <van-tab title="待支付">
-      <view class="none-list" wx:if="{{!isWaitPay}}">
+      <view class="none-list" wx:if="{{!isShowList}}">
         <text>您还没有订单哦~</text>
       </view>
-      <view class="wait-pay" wx:if="{{isWaitPay}}">
+      <view class="wait-pay" wx:if="{{isShowList}}">
         <van-card
-          num="2"
-          price="2.00"
-          desc="描述信息"
-          title="商品标题"
-          thumb="{{ imageURL }}"
+          num="{{item.amount}}"
+          price="{{item.productTotalPrice}}"
+          desc="{{ item.orderItemList.length>1?item.orderItemList[0].goodsName + '等多个商品':item.orderItemList[0].goodsName }}"
+          title="编号：{{item.orderNo}}"
+          thumb="{{ item.orderItemList[0].goodsImage }}"
+          wx:for="{{orderList}}"
+          wx:key="{{index}}"
         >
           <view slot="footer">
             <van-button type="danger" size="mini" bind:tap="onGoPay">去支付</van-button>
-            <van-button size="mini" bind:tap="onCancelOrder">取消</van-button>
+            <van-button type="danger" size="mini" bind:tap="onGoPay" data-id="{{item.orderNo}}">查看详情</van-button>
+            <van-button size="mini" bind:tap="onCancelOrder" data-id="{{item.orderNo}}">取消</van-button>
           </view>
         </van-card>
       </view>
     </van-tab>
     <van-tab title="待发货">
-      <view class="none-list" wx:if="{{!isWaitDeliver}}">
+      <view class="none-list" wx:if="{{!isShowList}}">
         <text>您还没有订单哦~</text>
       </view>
-      <view class="wait-deliver" wx:if="{{isWaitDeliver}}">
+      <view class="wait-deliver" wx:if="{{isShowList}}">
         <van-card
-          num="2"
-          price="2.00"
-          desc="描述信息"
-          title="商品标题"
-          thumb="{{ imageURL }}"
+          num="{{item.amount}}"
+          price="{{item.productTotalPrice}}"
+          desc="{{ item.orderItemList.length>1?item.orderItemList[0].goodsName + '等多个商品':item.orderItemList[0].goodsName }}"
+          title="编号：{{item.orderNo}}"
+          thumb="{{ item.orderItemList[0].goodsImage }}}"
+          wx:for="{{orderList}}"
+          wx:key="{{index}}"
         >
           <view slot="footer">
-            <van-button type="danger" size="mini" bind:tap="onOrderDetail">查看详情</van-button>
+            <van-button type="danger" size="mini" bind:tap="onOrderDetail" data-id="{{item.orderNo}}">查看详情</van-button>
           </view>
         </van-card>
       </view>
     </van-tab>
     <van-tab title="已发货">
-      <view class="none-list" wx:if="{{!isGoDeliver}}">
+      <view class="none-list" wx:if="{{!isShowList}}">
         <text>您还没有订单哦~</text>
       </view>
-      <view class="go-deliver" wx:if="{{isGoDeliver}}">
+      <view class="go-deliver" wx:if="{{isShowList}}">
         <van-card
-          num="2"
-          price="2.00"
-          desc="描述信息"
-          title="商品标题"
-          thumb="{{ imageURL }}"
+          num="{{item.amount}}"
+          price="{{item.productTotalPrice}}"
+          desc="{{ item.orderItemList.length>1?item.orderItemList[0].goodsName + '等多个商品':item.orderItemList[0].goodsName }}"
+          title="编号：{{item.orderNo}}"
+          thumb="{{ item.orderItemList[0].goodsImage }}"
+          wx:for="{{orderList}}"
+          wx:key="{{index}}"
         >
           <view slot="footer">
             <van-button type="danger" size="mini" bind:tap="onPostMsg">查看物流</van-button>
-            <van-button size="mini">查看详情</van-button>
-            
+            <van-button size="mini" bind:tap="onOrderDetail" data-id="{{item.orderNo}}">查看详情</van-button>
           </view>
         </van-card>
       </view>
     </van-tab>
     <van-tab title="已完成">
-      <view class="none-list" wx:if="{{!isFinish}}">
+      <view class="none-list" wx:if="{{!isShowList}}">
         <text>您还没有订单哦~</text>
       </view>
-      <view class="finish-order" wx:if="{{isFinish}}">
+      <view class="finish-order" wx:if="{{isShowList}}">
         <van-card
-          num="2"
-          price="2.00"
-          desc="描述信息"
-          title="商品标题"
+          num="{{item.amount}}"
+          price="{{item.productTotalPrice}}"
+          desc="时间：{{item.createTime}}"
+          title="编号：{{item.orderNo}}"
           thumb="{{ imageURL }}"
+          wx:for="{{orderList}}"
+          wx:key="{{index}}"
+          bind:tap="onOrderDetail" 
+          data-id="{{item.orderNo}}"
         >
         </van-card>
       </view>

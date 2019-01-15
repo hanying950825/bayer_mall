@@ -6,7 +6,8 @@
     "van-checkbox": "../../dist/checkbox/index",
     "van-checkbox-group": "../../dist/checkbox-group/index",
     "van-submit-bar": "../../dist/submit-bar/index",
-    "van-stepper": "../../dist/stepper/index"
+    "van-stepper": "../../dist/stepper/index",
+    "van-toast": "../../dist/toast/index"
   },
   "navigationBarTitleText": "购物车"
 }

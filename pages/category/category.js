@@ -74,7 +74,6 @@ Page({
       url: url + '/mall/category/list/0',
       method: 'POST',
       success: function(data) {
-        console.log(data.data.data[0].next)
         _this.setData({
           firstClassify: data.data.data,
           secClassify: data.data.data[0].next
@@ -84,8 +83,6 @@ Page({
   },
 
   onChange(event) {
-    console.log(event.detail)
-    console.log(this.data.firstClassify[event.detail])
     this.setData({
       secClassify: this.data.firstClassify[event.detail].next
     })
@@ -99,7 +96,6 @@ Page({
     })
   },
   onShopsList(obj) {
-    console.log(obj.target.dataset.id.id)
     app.globalData.categoryId = obj.target.dataset.id.id
     app.globalData.searchType = ''
     wx.navigateTo({

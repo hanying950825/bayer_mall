@@ -2,7 +2,8 @@
   "usingComponents": {
     "van-button": "../../../dist/button/index",
     "van-checkbox": "../../../dist/checkbox/index",
-    "van-icon": "../../../dist/icon/index"
+    "van-icon": "../../../dist/icon/index",
+    "van-toast": "../../../dist/toast/index"
   },
   "navigationBarTitleText": "地址列表"
 }

@@ -76,6 +76,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
+    console.log(333)
     this._fetchList(this.data.active)
   },
 
@@ -109,12 +110,19 @@ Page({
           method: 'POST',
           data: data,
           success: function(data) {
+            const res = data.data.data.data
+            if (res.length > 0 || _this.data.list) {
+              var momentList = _this.data.list
+              for (var i = 0; i < res.length; i++) {
+                momentList.push(res[i]);
+              }
+            }
             _this.setData({
-              list: data.data.data.data,
+              list: momentList,
               count:data.data.data.counts
             })
-            let i = _this.data.oParams.page
-            i++
+            let j = _this.data.oParams.page
+            j++
             _this.setData({
               oParams: {
                 page: i,
@@ -332,5 +340,11 @@ Page({
       }
     })
     this._fetchList(this.data.active)
+  },
+  onDetails(opt) {
+    app.globalData.shopDetail = opt.target.dataset.id
+    wx.navigateTo({
+      url: '../detail/detail',
+    })
   }
 })

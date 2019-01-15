@@ -3,7 +3,7 @@
   width: 100%;
   height: 300rpx;
   text-align: center;
-  background: #000;
+  background: #37383C;
   
   
 }

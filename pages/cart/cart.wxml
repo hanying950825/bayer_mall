@@ -4,7 +4,7 @@
   <view class="cart-clean" wx:if="{{isClean}}">
     <image src="../../images/cart_select.png" class="cart-img"></image>
     <text class="clean-tit">哎呀，你的购物车还是空的呢，快去逛逛吧~</text>
-    <van-button plain round type="default">去逛逛</van-button>
+    <van-button plain round type="default" bindtap='goHome'>去逛逛</van-button>
   </view>
   <view class="goods-list" wx:if="{{!isClean}}">
     <view class="heder-msg">
@@ -14,9 +14,9 @@
     </view>
     <!-- 商品列表 -->
     <view class="main-list">
-      <van-swipe-cell id="swipe-cell" right-width="{{ 65 }}" async-close bind:close="onClose" wx:for="{{ list }}" wx:key="{{ index }}">
+      <van-swipe-cell id="swipe-cell" right-width="{{ 65 }}" async-close bind:close="onClose" wx:for="{{ list }}" wx:key="{{ index }}" data-id="{{item}}">
         <van-cell-group class="card-main">
-          <van-checkbox-group value="{{ value }}" bind:change="onGoodsChange" data-id="{{item.id}}">
+          <van-checkbox-group value="{{ value }}" bind:change="onGoodsChange" data-id="{{item}}">
             <van-checkbox class="list-checkbox" name="{{ item.id }}" checked-color="#000"></van-checkbox>
             <van-card
               price="{{item.retailPrice}}"
@@ -25,7 +25,7 @@
               thumb="{{ item.mainImage }}"
             >
               <view slot="footer">
-                <van-stepper value="{{ item.amount }}" bind:change="onStepChange" />
+                <van-stepper value="{{ item.amount }}" bind:change="onStepChange" data-id="{{item}}"/>
               </view>
             </van-card>
           </van-checkbox-group>
@@ -33,6 +33,7 @@
         <view slot="right">删除</view>
       </van-swipe-cell>
     </view>
+    <van-toast id="van-toast"/>
     <!-- 角标 -->
     <view class="cart-footer">
       <van-submit-bar

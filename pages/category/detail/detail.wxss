@@ -115,7 +115,7 @@ swiper {
   background: #000;
   opacity: 0.5;
   overflow: hidden;
-  z-index: 1000;
+  z-index: 100;
   color: #fff;
 }
 /*对话框 */
@@ -125,7 +125,7 @@ swiper {
   position: fixed;
   bottom: 0;
   left: 0;
-  z-index: 2000;
+  z-index: 200;
   background: #fff;
   padding:20rpx 3%;
 }
@@ -202,19 +202,10 @@ swiper {
   margin-top:5px;
   right:50rpx;
 }
- 
-.btn{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-.button-add{
+
+.commodity_attr_box .van-button--normal{
   width:98%;
-  margin: 0 auto;
-  border:0px;
-  background:#4CAF50;
-  color:#fff;
-  border-radius: 0px;
+
 }
  
  

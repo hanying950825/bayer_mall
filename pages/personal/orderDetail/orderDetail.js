@@ -1,29 +1,24 @@
 // pages/personal/orderDetail/orderDetail.js
+const app = getApp()  
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
-    expressStatus: '您的快递已经到达xxxxxxxxxx',
-    expresstime: '2018-1-1 11:11:11',
-    expressName: '张三',
-    expressPhone: ' 138****8888',
-    expressAds: '江苏省南京市xx区xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-    imageURL: '../../images/cart.png',
-    totalPrice: '2',
-    goodPrice: '1',
-    postPrice: '2',
     serviceTime: '9:00-24:00',
-    orderNum: '31231123',
-    orderTime: '2018-1-1 11:11:11'
+    orderNo: '',
+    orderDetail: {}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    console.log(options)
+    this.setData({
+      orderNo: options.orderDetail
+    })
+    this._fetchOrderDetail()
   },
 
   /**
@@ -36,8 +31,8 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-  
+  onShow: function (opt) {
+   
   },
 
   /**
@@ -87,11 +82,38 @@ Page({
   },
   // 删除订单
   onDelete() {
+    const url = app.globalData.url
+    const _this = this
     wx.showModal({
       title: '删除订单',
       content: '您是否确认要删除该订单？',
-      success: function() {
-        
+      success: function(res) {
+        if (res.confirm) {
+          wx.request({
+            url: url + `/user/order/delete/${_this.data.orderDetail.orderNo}`,
+            method: 'POST',
+            success: function (data) {
+              wx.navigateBack({
+                delta: 1
+              })
+            }
+          })
+        }
+      }
+    })
+  },
+
+  _fetchOrderDetail() {
+    const url = app.globalData.url
+    const _this = this
+    wx.request({
+      url: url + `/user/order/detail/${_this.data.orderNo}`,
+      method: 'POST',
+      success: function(data) {
+        console.log(data.data.data)
+        _this.setData({
+          orderDetail: data.data.data
+        })
       }
     })
   }

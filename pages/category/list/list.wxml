@@ -21,6 +21,8 @@
         desc="{{item.goodsDesc}}"
         title="{{item.goodsName}}"
         thumb="{{item.mainImage}}"
+        bind:tap="onDetails" 
+        data-id="{{item}}"
       />
     </view>
   </view>
