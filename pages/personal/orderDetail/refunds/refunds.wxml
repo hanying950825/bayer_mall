@@ -1,0 +1,54 @@
+<view class="goods-card">
+  <van-card
+    thumb="{{goodsImage}}"
+    price="{{goodsPrice}}"
+    title="{{productName}}"
+    desc="{{goodsName}}"
+    num="{{goodsCounts}}"/>
+</view>
+<!-- 退款原因 -->
+<view class="goods-refunds" wx:if="isRefundReason">
+  <view class="refund-reason">
+    <view class="refund-part1">
+      <text class="refund-desc">退款原因 ：</text>
+      <view class="select-reason" bind:tap="onChangeStatus">
+        <text>{{refundReason}}</text>
+        <van-icon name="arrow" class="right-icon"/>
+      </view>
+      <van-action-sheet show="{{ isShow }}" title="退款原因" bind:close="onClose"  bind:select="onSelect" actions="{{ reasonList }}"/>
+    </view>
+    <view class="refund-part2">
+      <text class="refund-desc">退款金额 ：</text>
+      <image src="../../../../images/money.png" class="money-icon"></image>
+      <text class="goods-money">{{goodsPrice}}</text>
+    </view>
+  </view>
+</view>
+<view wx:else>
+  <view class="refund-reason">
+    <view class="refund-part1">
+      <text class="refund-desc">物流公司 ：</text>
+      <view class="select-reason" bind:tap="onChangeStatus">
+        <text class="text-content">{{logisticsCompany}}</text>
+        <van-icon name="arrow" class="right-icon"/>
+      </view>
+      <van-action-sheet show="{{ isShow }}" title="物流公司" bind:close="onClose" bind:select="onSelect"  actions="{{ logisticsList }}"/>
+    </view>
+    <view class="refund-part2">
+      <text class="refund-desc">物流单号 ：</text>
+      <input type="number" placeholder="请填写物流单号" class="refunds-content" auto-focus="true"></input>
+    </view>
+  </view>
+  <view class="refund-part3">
+    <text class="refund-desc">联系电话 ：</text>
+    <input type="number" placeholder="请填写联系电话" class="refunds-content" auto-focus="true"></input>
+  </view>
+</view>
+
+
+<!-- 退款说明 -->
+<view class="refunds-explain">
+  <text class="refund-desc">退款说明 ：</text>
+  <input type="text" placeholder="选填" class="refunds-content"></input>
+</view>
+<van-button size="large" type="danger" class="refunds-submit">提交</van-button>

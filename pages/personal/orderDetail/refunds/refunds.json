@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "van-cell-group": "../../../../dist/cell-group/index",
+    "van-card": "../../../../dist/card/index",
+    "van-button": "../../../../dist/button/index",
+    "van-action-sheet": "../../../../dist/action-sheet/index",
+    "van-icon": "../../../../dist/icon/index",
+    "van-field": "../../../../dist/field/index"
+  }
+}

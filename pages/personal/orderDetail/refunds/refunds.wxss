@@ -1,0 +1,77 @@
+.van-card {
+  background: #fff!important;
+  margin-bottom: 30rpx;
+}
+.van-card__desc,.van-card__num {
+  margin-top: 20rpx;
+}
+.goods-refunds {
+  width: 100%;
+  background: #fff;
+}
+.refund-reason {
+  font-size: 13px;
+  padding: 20rpx 0;
+  background: #fff;
+}
+.refund-part1 {
+  margin-bottom: 20rpx;
+}
+.refund-part1,.refund-part2 {
+  height: 1.4rem;
+  line-height: 1.4rem;
+}
+.refund-part3 {
+  margin-top: 30rpx;
+  background: #fff;
+  font-size: 13px;
+  height: 70rpx;
+  line-height: 70rpx;
+}
+.select-reason {
+  display: inline-block;
+  width: 75%;
+  color: rgb(165, 165, 162);
+}
+.right-icon {
+  float: right;
+}
+.refund-desc {
+  display: inline-block;
+  padding: 0 0 0 24rpx;
+  margin-right: 20rpx;
+}
+.money-icon {
+  width: 10px;
+  height: 10px;
+}
+.goods-money {
+  color: red;
+}
+.refunds-explain {
+  background: #fff;
+  margin-top: 30rpx;
+  font-size: 13px;
+  height: 70rpx;
+  line-height: 70rpx;
+}
+.refunds-content {
+  display: inline-flex;
+  width: 75%;
+  color: rgb(165, 165, 162);
+  vertical-align: middle;
+}
+.reasons {
+  width:90%;
+  height: 30px;
+  line-height: 30px;
+  border-bottom:1px solid rgb(230, 230, 227);
+}
+.refunds-submit {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+}
+input::-webkit-input-placeholder {
+  color: rgb(165, 165, 162);
+}

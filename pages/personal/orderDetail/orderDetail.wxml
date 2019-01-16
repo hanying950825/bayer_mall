@@ -45,7 +45,7 @@
   </view>
   <view style="height:100rpx"></view>
   <view class="footer-btn">
-    <van-button type="danger" size="small" wx:if="{{orderDetail.orderStatusDesc == '待发货' || orderDetail.orderStatusDesc == '待收货' ||  orderDetail.orderStatusDesc == '退款申请'}}">退货退款</van-button>
+    <van-button type="danger" size="small" wx:if="{{orderDetail.orderStatusDesc == '待发货' || orderDetail.orderStatusDesc == '待收货' ||  orderDetail.orderStatusDesc == '退款申请'}}" bind:tap="toRefund">退货退款</van-button>
     <van-button type="danger" size="small" wx:if="{{orderDetail.orderStatusDesc == '待付款'}}">去支付</van-button>
     <van-button type="danger" size="small" wx:if="{{orderDetail.orderStatusDesc == '已发货'}}">物流查询</van-button>
     <van-button type="danger" size="small" bind:tap="onDelete">删除订单</van-button>
