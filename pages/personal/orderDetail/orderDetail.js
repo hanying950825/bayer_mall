@@ -69,6 +69,12 @@ Page({
   onShareAppMessage: function () {
   
   },
+  //跳转到退货退款页面
+  toRefund: function () {
+    wx.navigateTo({
+      url: 'refunds/refunds',
+    })
+  },
   // 复制订单编号
   onCopyNum() {
     wx.setClipboardData({

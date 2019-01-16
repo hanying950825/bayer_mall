@@ -1,5 +1,6 @@
 {
   "pages":[
+    "pages/personal/orderDetail/refunds/refunds",
 		"pages/home/home",
 		"pages/category/category",
     "pages/category/detail/detail",
@@ -10,6 +11,7 @@
 		"pages/personal/personal",
     "pages/personal/aboutus/aboutus",
     "pages/personal/orderDetail/orderDetail",
+    
     "pages/personal/collection/collection",
     "pages/personal/logistics/logistics",
     "pages/personal/address/address",
