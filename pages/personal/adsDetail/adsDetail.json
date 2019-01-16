@@ -4,7 +4,8 @@
     "van-field": "../../../dist/field/index",
     "van-cell-group": "../../../dist/cell-group/index",
     "van-popup": "../../../dist/popup/index",
-    "van-area": "../../../dist/area/index"
+    "van-area": "../../../dist/area/index",
+    "van-toast": "../../../dist/toast/index"
   },
   "navigationBarTitleText": "地址编辑"
 }

@@ -104,7 +104,10 @@ Page({
   },
   // 编辑
   onEdit(opt) {
-    console.log(opt)
+    const item = opt.currentTarget.dataset.id
+    wx.navigateTo({
+      url: `../adsDetail/adsDetail?adsId=${item.id}&&userName=${item.name}&&userPhone=${item.phone}&&province=${item.province}&&city=${item.city}&&district=${item.district}&&address=${item.address}`,
+    })
   },
   // 设为默认
   onDefault(opt) {
@@ -150,7 +153,6 @@ Page({
       url: url + `/user/address/list/${_this.data.oParams.page}-${_this.data.oParams.size}`,
       method: 'POST',
       success: function(data) {
-        console.log(data)
         const res = data.data.data.data
         if (res.length > 0 && _this.data.adsList) {
           var momentList = _this.data.adsList
@@ -159,9 +161,7 @@ Page({
           }
           _this.setData({
             adsList: momentList,
-            isShow: true
-          })
-          _this.setData({
+            isShow: true,
             oParams: {
               size: 10,
               page: _this.data.oParams.page + 1

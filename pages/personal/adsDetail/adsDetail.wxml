@@ -2,23 +2,24 @@
 <view class="container-adress-edit">
   <view class="need-address">
     <van-cell-group>
-      <van-field value="{{ userName }}" clearable placeholder="姓名(请填写真实姓名,否则订单无法送达)" bind:blur="onGetName" focus/>
+      <van-field value="{{ userName }}" clearable placeholder="姓名(请填写真实姓名,否则订单无法送达)" bind:blur="onGetName" focus error-message="{{errorName}}" bind:clear="onCleanName"/>
     </van-cell-group>
     <van-cell-group>
-      <van-field value="{{ userPhone }}" clearable placeholder="手机号" maxlength="26" type="number" bind:blur="onGetPhone"/>
+      <van-field value="{{ userPhone }}" clearable placeholder="手机号" maxlength="11" type="number" bind:blur="onGetPhone" error-message="{{errorPhone}}" bind:clear="onCleanPhone"/>
     </van-cell-group>
     <van-cell-group>
-      <van-field value="{{ userLocal }}" clearable placeholder="选择地区" bind:focus="onGetLocal">
-      <picker mode="region" value="{{regionList}}" bindchange='onChangeRegion' disabled="true"></picker>
-      </van-field>
+      <picker mode="region" value="{{regionList}}" custom-item="{{customItem}}" bindchange="onChangeRegion">
+        <van-field value="{{ userLocal }}" clearable placeholder="选择地区" error-message="{{errorRegion}}"/>
+      </picker>
     </van-cell-group>
     <van-cell-group>
-      <van-field value="{{ userAddress }}" clearable placeholder="详细地址(最多26个字符)" maxlength="26" bind:blur="onGetAds"/>
+      <van-field value="{{ userAddress }}" clearable placeholder="详细地址(最多26个字符)" maxlength="26" bind:blur="onGetAds" error-message="{{errorAddress}}" bind:clear="onCleanAddress"/>
     </van-cell-group>
     <van-cell-group>
-      <van-field value="{{ userPostCode }}" clearable placeholder="邮编" maxlength="6" bind:blur="onGetPostCode"/>
+      <van-field value="{{ userPostCode }}" clearable placeholder="邮编" maxlength="6" bind:blur="onGetPostCode" bind:clear="onCleanpost"/>
     </van-cell-group>
   </view>
+  <van-toast id="van-toast" />
   <view class="footer-btn">
     <van-button type="danger" plain class="use-wx-ads" bind:tap="onWxAds">使用微信地址</van-button>
     <van-button type="danger" class="ads-finish" bind:tap="onFinish">完成</van-button>

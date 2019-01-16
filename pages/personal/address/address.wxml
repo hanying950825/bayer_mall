@@ -16,7 +16,7 @@
             <van-icon name="delete"></van-icon>
             <text>删除</text>
           </view>
-          <view class="edit" bind:tap="onEdit" data-id="{{item.id}}">
+          <view class="edit" bind:tap="onEdit" data-id="{{item}}">
             <van-icon name="records"></van-icon>
             <text>编辑</text>
           </view>
@@ -29,6 +29,7 @@
     </view>
   </view>
   <view class="none-list" wx:else>请先添加地址吧~</view>
+  <view style="height:120rpx"></view>
   <view class="footer-btn">
     <van-button type="danger" class="add-new-ads" bind:tap="onAddAddress">添加新地址</van-button>
   </view>
